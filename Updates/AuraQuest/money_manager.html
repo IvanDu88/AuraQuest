@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<title>Money Manager</title>
+<body>
+    <section><!--This section shows the button to go home-->
+        <nav>
+            <a href="index.html"><b><-- Home</b></a>
+        </nav>
+    </section>
+    <section><h1>AuraQuest - Money Manager</h1> <!--This section displays the header and description-->
+            <p>AuraQuest presents it's tool to help manage everyones favorite thing in the world, money. In order for you to have aura you must have money and with this tool we will take your monthly income as your budget and allow you to set your savings goal ($ Goal), along with that we will allow you to input your expenses into categories to help you map out your spending and get into healthy spending habits. Finally we will display your progress towards your savings goal at the bottom with a color coded text based on how much money you inputted into savings (Green=100%+, Yellow=99%-70%, Red=69%-0%).</p>
+            <hr>
+    </section>
+    <section><!--This section will allow the user to input their monthly income and savings goal-->
+        <table>
+            <tr>
+                <td><label for="Budget"><h2>Budget:</h2></label></td>
+                <td>
+                    <form>
+                        <input type="number" value="Budget" placeholder="ex: $1234.56" name="Budget" id="Budget" required>
+                        <input type="submit" value="Submit Budget" name="submit" id="submit">
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="Savings"><h2>$ Goal:</h2></label></td>
+                <td>
+                    <form>
+                        <input type="number" value="Savings" placeholder="ex: $1234.56" name="Savings" id="Savings" required>
+                        <input type="submit" value="Submit Goal" name="submit" id="submit">
+                    </form>
+                </td>
+            </tr>
+        </table>
+        <hr>
+    </section>
+    <section> <!--This section will display a drop down menu with options and a spot for users to enter the amount of money dedicated to that category-->
+        <table>
+            <tr>
+                <td><label for="Category"><h2>Category:</h2></label></td>
+                <td>
+                    <form>
+                        <select id="Category" name="Category" required>
+                            <!--hidden default choice: https://stackoverflow.com/questions/3518002/how-can-i-set-the-default-value-for-an-html-select-element-->
+                            <option value="" selected disabled hidden>Choose a Category</option>
+                            <option value="Food">Food</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Savings">Savings</option>
+                            <option value="Family">Family</option>
+                            <option value="Transportation">Transportation</option>
+                            <option value="School/Housing">School/Housing</option>
+                        </select>
+                        <input type="submit" value="Submit Category" name="submit" id="submit">
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                </td>
+                <td><label for="Spent"><h2>Spendings:</h2></label></td>
+                <td>
+                    <form>
+                        <input type="number" placeholder="ex: $1234.56" name="Spent" id="Spent" required>
+                        <input type="submit" value="Submit Money Spent" name="submit" id="submit">
+                    </form>
+                </td>
+            </tr>
+        </table>
+        <hr>
+    </section>
+    <section><h2>Remaining Money: ____</h2> <!--This section will display a table with options to enter spendings in pre-set categories (food, personal, savings, family, transportation, school/housing)-->
+        <hr>
+        <table>
+            <caption><h3>Spending Summary</h3></caption>
+            <tr>
+                <td><h4>Food</h4></td>
+                <td><h4>Personal</h4></td>
+                <td><h4>Savings</h4></td>
+                <td><h4>Family</h4></td>
+                <td><h4>Transportation</h4></td>
+                <td><h4>School/Housing</h4></td>
+            </tr>
+            <tr> <!--Temporary values until functionality is implemented-->
+                <td>$400</td>
+                <td>$200</td>
+                <td>$1000</td>
+                <td>$800</td>
+                <td>$150</td>
+                <td>$1200</td>
+            </tr>
+        </table>
+        <form>
+            <input type="reset" value="Reset Spendings" name="reset" id="reset">
+        </form>
+        <hr>
+    </section>
+    <section><h2>Savings Goal Progress:</h2><!--Displays the progress of the users savings goal-->
+        <!--Text Color will change with functionality implementation-->
+        <p>Your savings goal of ____</p>
+    </section>
+</body>
