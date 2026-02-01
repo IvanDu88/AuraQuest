@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AuraQuest | Productivity Arena</title>
+</head>
+
+<body>
+<nav>
+    <a href="index.html"><b>&larr; Home</b></a>
+</nav>
+
+<section>
+    <h1>Productivity Arena</h1> <!-- start of the productivity arena page, temporary values and texts are placed for now -->
+    <p>
+        The Productivity Arena helps you set and achieve your personal goals.
+        Track your tasks, use the Pomodoro timer, and earn points for your progress!
+    </p>
+    <hr>
+</section>
+
+<section>
+    <h2>Set Your Goals</h2> <!-- you can set your goals here using editiable text boxes -->
+    <form>
+        <label for="goal">New Goal:</label><br>
+        <input type="text" id="goal" name="goal" placeholder="ex: Read for 30 minutes"><br><br>
+
+        <label for="priority">Priority:</label><br>
+        <select id="priority" name="priority"> <!-- custom dropdown text menu to select priorty of the task-->
+            <option>Low</option>
+            <option>Medium</option>
+            <option selected>High</option>
+        </select><br><br>
+
+        <label for="deadline">Target Date:</label><br>
+        <input type="date" id="deadline" name="deadline"><br><br>
+
+        <input type="submit" value="Add Goal">
+    </form>
+    <hr>
+</section>
+
+<section>
+    <h2>Today's Tasks</h2><!-- table that displays all tasks for the current day-->
+    <table border="1">
+        <caption>Active Goals</caption>
+        <tr>
+            <th>Task</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td>Complete project proposal</td>
+            <td>High</td>
+            <td>In Progress</td>
+            <td><input type="checkbox"> Mark Complete</td> <!-- checkbox to mark it complete -->
+        </tr>
+        <tr>
+            <td>Exercise for 20 minutes</td>
+            <td>Medium</td>
+            <td>Not Started</td>
+            <td><input type="checkbox"> Mark Complete</td>
+        </tr>
+        <tr>
+            <td>Read 10 pages</td>
+            <td>Low</td>
+            <td>✓ Completed</td>
+            <td>Done!</td>
+        </tr>
+    </table>
+    <hr>
+</section>
+
+<section>
+    <h2>Pomodoro Timer</h2> <!-- pomodoro timer for tasks -->
+    <p>
+        Use the Pomodoro technique to stay focused! Work for 25 minutes, 
+        then take a 5-minute break.
+    </p>
+    
+    <form>
+        <label for="session-type">Session Type:</label><br>
+        <select id="session-type" name="session-type">
+            <option>Work (25 min)</option>
+            <option>Short Break (5 min)</option>
+            <option>Long Break (15 min)</option>
+        </select><br><br>
+
+        <label for="task-focus">What are you working on?</label><br>
+        <input type="text" id="task-focus" name="task-focus" placeholder="Focus task"><br><br>
+
+        <input type="button" value="Start Timer">
+        <input type="button" value="Pause">
+        <input type="button" value="Reset">
+    </form>
+
+    <p><strong>Time Remaining:</strong> 25:00</p>
+    <p><strong>Sessions Completed Today:</strong> 3 🍅🍅🍅</p>
+    <hr>
+</section>
+
+<section>
+    <h2>Progress Stats</h2>
+    <ul>
+        <li><strong>Current Streak:</strong> 7 days 🔥</li>
+        <li><strong>Total Points Earned:</strong> 850 ⭐</li>
+        <li><strong>Tasks Completed This Week:</strong> 12</li>
+        <li><strong>Focus Time This Week:</strong> 6 hours 15 minutes</li>
+    </ul>
+</section>
+
+<footer>
+    <p>&copy; 2026 AuraQuest</p>
+</footer>
+
+</body>
+</html>
