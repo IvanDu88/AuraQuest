@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>AuraQuest | Home Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <section> <h1>AuraQuest</h1><!--This section displays the Header and the Description-->
+    <section> <h1 id="homePage">AuraQuest</h1><!--This section displays the Header and the Description-->
 
-        <p>Welcome to AuraQuest where our goal is to help you 
+        <p id="description">Welcome to AuraQuest where our goal is to help you 
             gain the most aura. With the use of gamified 
             systems we promise that your aura farming 
             journey will not only be successful
@@ -15,70 +16,47 @@
         </p>
         <hr>
     </section>
-    <section><!--This section displays the navigation table-->
-        <table>
-            <caption><h2>Navigation:</h2></caption>
-            <tr>
-            <td>
-                <nav>
-                    <a href="about.html"><h3>About</h3></a>
-                </nav>
-            </td>
-            <td>
-                <nav>
-                    <a href="contact.html"><h3>Contact</h3></a>
-                </nav>
-            </td>
-            <td>
-                <nav>
-                    <a href="money_manager.html"><h3>Money Manager</h3></a>
-                </nav>
-            </td>
-            <td>
-                <nav>
-                    <a href="health_tracker.html"><h3>Healthy Habits Tracker</h3></a>
-                </nav>
-            </td>
-            <td>
-                <nav>
-                    <a href="productivity.html"><h3>Productivity Arena</h3></a>
-                </nav>
-            </td>
-            <td>
-                <nav>
-                    <a href="achievements.html"><h3>Achievements</h3></a>
-                </nav>
-            </td>
-            <td>
-                <nav>
-                    <a href="journal.html"><h3>Journaling</h3></a>
-                </nav>
-            </td>
-            </tr>
-        </table>
-        <hr>
-    </section>
-    <section><h2>Your Account:</h2><!--This section will display the user avatar and their level and recent achievements-->
+    <!--This is the navigation side -->
+    <nav id="mainNav">
+        <p id="navText"><u>Navigation</u></p>
+        <ul id="navUL">
+            <li><a href="about.html">About</a></li>
+            <br>
+            <li><a href="contact.html">Contact</a></li>
+            <br>
+            <li><a href="money_manager.html">Money Manager</a></li>
+            <br>
+            <li><a href="health_tracker.html">Healthy Habits Tracker</a></li>
+            <br>
+            <li><a href="productivity.html">Productivity Arena</a></li>
+            <br>
+            <li><a href="achievements.html">Achievements</a></li>
+            <br>
+            <li><a href="journal.html">Journaling</a></li>
+        </ul>
+    </nav>
+    
+    <main><h2>Your Account:</h2><!--This section will display the user avatar and their level and recent achievements-->
         <hr>
         <h3>Your Avatar:</h3>
         <!--Image from Pinterest https://id.pinterest.com/pin/1077978860777984654/-->
-        <img src="Images/Default.jpg" alt="Profile Picture" height="400" width="400">
-        <br>Image via <a href="https://id.pinterest.com/pin/1077978860777984654/">Pinterest </a>
-        <h3>Your Stats:</h3>
-        <h3>Aura Level: 0</h3>
-        <h3>Recent Achievements:</h3>
-        <ul>
-            <li>
+        <img id="pfp" src="Images/Default.jpg" alt="Profile Picture" height="400" width="400">
+        <br>Image via <a id="pintrest" href="https://id.pinterest.com/pin/1077978860777984654/">Pinterest </a>
+        <h3><u>Your Stats:</u></h3>
+        <h4>Aura Level: 0</h4>
+        <h4>Recent Achievements:</h4>
+        <ol id="achieve">
+            <li class="achieve">
                 Aura Farmed
             </li>
-            <li>
+            <li class="achieve">
                 Displayed Aura to new friends
             </li>
-            <li>
+            <li class="achieve">
                 Dreamt of Aura Farming
             </li>
-        </ul>
-    </section>
+        </ol>
+    </main>
 <footer>
     <p>&copy; 2026 AuraQuest</p>
 </footer>
