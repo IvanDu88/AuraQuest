@@ -36,7 +36,7 @@ h4 {
 
 body {
     background-color: rgb(188, 212, 156);
-    font-family: monospace;
+    font-family: monospace, Arial, sans-serif;
 }
 
 #mainNav {
