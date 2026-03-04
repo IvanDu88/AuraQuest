@@ -1,0 +1,90 @@
+#homePage {
+    margin-top:-10px;
+}
+
+#mainNav {
+    display:block;
+    margin: auto;
+    margin-top: -15px;
+    margin-bottom: -15px;
+    text-align: center;
+    width: 95vw;
+    background-color: rgb(157, 216, 162);   
+    border: 1px solid black;
+    
+}
+
+#navUL {
+    list-style-type: none;
+}
+
+#navText {
+    display: none;
+}
+#pfp {
+    display: block;
+    border: 5px solid black;
+    margin: auto;
+}
+
+#pintrest{
+    font-size: 15px;
+}
+
+#citation {
+    text-align: center;
+}
+
+.achieve {
+    font-size: 16px;
+}
+
+@media (min-width:768px) {
+    #mainNav {
+        float:left;
+        width:195px;
+        height:100vh;
+        margin-left: -15px;
+        margin-top: 25px;
+        background: none;
+        border: none;
+    }
+    #navText {
+        display: inline;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 25px;
+        margin-left: 45px;   
+    }
+
+    main {
+        margin-left:219px;
+    }
+
+}
+
+@media (min-width:992px) {
+    #pfp {
+    margin: 0px;
+    }
+
+    #citation {
+    text-indent: 7.5em;
+    text-align: left;
+    }
+
+    #pfpAndCite {
+        float:left;
+    }
+
+    #stats {
+        text-indent: 5em;
+    }
+
+    
+
+    footer {
+        clear:both;
+    }
+}
+

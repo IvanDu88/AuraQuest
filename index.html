@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AuraQuest | Home Dashboard</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="indexStyles.css">
 </head>
 <body>
     <section> <h1 id="homePage">AuraQuest</h1><!--This section displays the Header and the Description-->
@@ -39,23 +41,27 @@
     <main><h2>Your Account:</h2><!--This section will display the user avatar and their level and recent achievements-->
         <hr>
         <h3>Your Avatar:</h3>
-        <!--Image from Pinterest https://id.pinterest.com/pin/1077978860777984654/-->
-        <img id="pfp" src="Images/Default.jpg" alt="Profile Picture" height="400" width="400">
-        <br>Image via <a id="pintrest" href="https://id.pinterest.com/pin/1077978860777984654/">Pinterest </a>
-        <h3><u>Your Stats:</u></h3>
-        <h4>Aura Level: 0</h4>
-        <h4>Recent Achievements:</h4>
-        <ol id="achieve">
-            <li class="achieve">
-                Aura Farmed
-            </li>
-            <li class="achieve">
-                Displayed Aura to new friends
-            </li>
-            <li class="achieve">
-                Dreamt of Aura Farming
-            </li>
-        </ol>
+    <section id="pfpAndCite">
+            <!--Image from Pinterest https://id.pinterest.com/pin/1077978860777984654/-->
+            <img id="pfp" src="Images/Default.jpg" alt="Profile Picture" height="400" width="400">
+            <br><p id="citation">Image via <a id="pintrest" href="https://id.pinterest.com/pin/1077978860777984654/">Pinterest </a></p>
+        </section>
+        <section id="stats">
+            <h3><u>Your Stats:</u></h3>
+            <h4>Aura Level: 0</h4>
+            <h4>Recent Achievements:</h4>
+            <ol id="achieve">
+                <li class="achieve">
+                    Aura Farmed
+                </li>
+                <li class="achieve">
+                    Displayed Aura to new friends
+                </li>
+                <li class="achieve">
+                    Dreamt of Aura Farming
+                </li>
+            </ol>
+        </section>
     </main>
 <footer>
     <p>&copy; 2026 AuraQuest</p>
