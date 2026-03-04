@@ -10,9 +10,6 @@ h1 {
     
 }
 
-#homePage {
-    margin-top:-10px;
-}
 
 h2 {
     font-weight: bold;
@@ -39,47 +36,16 @@ body {
     font-family: monospace, Arial, sans-serif;
 }
 
-#mainNav {
-    float:left;
-    width:195px;
-    height:100vh;
-    padding:10px;
-    margin-top: -25px;
-    
-}
-
-#navUL {
-    list-style-type: none;
-}
-
-
 a{
     text-decoration: none;
     font-size: 20px;
     
 }
 
-#navText {
-    text-align: center;
-    font-weight: bolder;
-    font-size: 25px;
-    
-}
-#pfp {
-    border: 5px solid black;
+a:hover {
+    color:red;
 }
 
-#pintrest{
-    font-size: 12px;
-}
-
-main {
-    margin-left:219px;
-}
-
-.achieve {
-    font-size: 16px;
-}
 
 footer {
     text-align: center;
