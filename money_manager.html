@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AuraQuest | Money Manager</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="moneyStyles.css">
 </head>
 <body>
     <div><!--This section shows the button to go home-->
@@ -44,17 +46,79 @@
         </form>
         <hr>
     </div>
-    <section><h2>Remaining Money: ____</h2> <!--This section will display a table with options to enter spendings in pre-set categories (food, personal, savings, family, transportation, school/housing)-->
+    <section class="mobile-table"><h2>Remaining Money: ____</h2>
+        <hr>
+            <table>
+            <caption><h3>Spending Summary</h3></caption>
+            <tr>
+                <th>Food:<th>
+                <td>$400</td>
+            </tr>   
+            <tr> 
+                <th>Personal:<th>
+                <td>$200</td>
+            </tr>   
+            <tr>
+                <th>Savings:<th>
+                <td>$1000</td>
+            </tr>
+            <tr>
+                <th>Family:<th>
+                <td>$800</td>
+            </tr>
+            <tr>
+                <th>Transportation:<th>
+                <td>$150</td>
+            </tr>
+            <tr>
+                <th>School/Housing:<th>
+                <td>$1200</td>
+            </tr>
+        </table>
+        
+    </section>
+        <section class="tablet-table"><h2>Remaining Money: ____</h2>
+        <hr>
+            <table>
+            <caption><h3>Spending Summary</h3></caption>
+            <tr>
+                <th><u>Food</u></th>
+                <th><u>Personal</u></th>  
+            </tr>   
+            <tr> 
+                <td>$400</td>
+                <td>$200</td>
+            </tr>   
+            <tr>
+                <th><u>Savings</u></th>
+                <th><u>Family</u></th>
+            </tr>
+            <tr>
+                <td>$1000</td>
+                <td>$800</td>
+            </tr>
+            <tr>
+                <th><u>Transportation</u></th>
+                <th><u>School/Housing</u></th>
+            </tr>
+            <tr> 
+                <td>$150</td>
+                <td>$1200</td>
+            </tr>
+        </table>
+        
+    </section>
+    <section class="desktop-table"><h2>Remaining Money: ____</h2> <!--This section will display a table with options to enter spendings in pre-set categories (food, personal, savings, family, transportation, school/housing)-->
         <hr>
         <table>
             <caption><h3>Spending Summary</h3></caption>
             <tr>
-                <td><h4>Food</h4></td>
-                <td><h4>Personal</h4></td>
-                <td><h4>Savings</h4></td>
-                <td><h4>Family</h4></td>
-                <td><h4>Transportation</h4></td>
-                <td><h4>School/Housing</h4></td>
+                <th>Food</th>
+                <th>Personal</th>
+                <th>Savings</th>
+                <th>Family</th>
+                <th>Transportation</th>
+                <th>School/Housing</th>
             </tr>
             <tr> <!--Temporary values until functionality is implemented-->
                 <td>$400</td>
@@ -64,15 +128,15 @@
                 <td>$150</td>
                 <td>$1200</td>
             </tr>
-        </table>
-        <form>
-            <input type="reset" value="Reset Spendings" name="reset" id="reset">
-        </form>
-        <hr>
+        </table>   
     </section>
+    <form>
+        <input type="reset" value="Reset Spendings" name="reset" id="reset">
+    </form>
+    <hr>
     <section><h2>Savings Goal Progress:</h2><!--Displays the progress of the users savings goal-->
         <!--Text Color will change with functionality implementation-->
-        <p>Your savings goal of ____</p>
+        <p id="goal">Your savings goal of ____</p>
     </section>
 <footer>
     <p>&copy; 2026 AuraQuest</p>
