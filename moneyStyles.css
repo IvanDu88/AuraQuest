@@ -1,0 +1,41 @@
+
+
+.desktop-table {
+    display: none;
+}
+
+.tablet-table {
+    display:none;
+    text-align: center;
+}
+
+th {
+    font-size: 18px;
+}
+
+h2{
+    text-align: left;
+}
+
+
+
+@media (min-width:768px) {
+    .tablet-table {
+        display: block;
+    }
+    .mobile-table {
+        display:none;
+    }
+}
+
+@media (min-width:1024px) {
+    .tablet-table {
+        display: none;
+    }
+    .mobile-table {
+        display:none;
+    }
+    .desktop-table {
+        display: block;
+    }
+}

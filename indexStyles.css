@@ -63,7 +63,7 @@
 
 }
 
-@media (min-width:992px) {
+@media (min-width:1024px) {
     #pfp {
     margin: 0px;
     }
@@ -81,7 +81,9 @@
         text-indent: 5em;
     }
 
-    
+    #achieve {
+        list-style-position: inside;
+    }
 
     footer {
         clear:both;
