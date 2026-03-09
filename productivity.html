@@ -2,117 +2,227 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AuraQuest | Productivity Arena</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="productivityStyles.css">
 </head>
 
 <body>
-<nav>
-    <a href="index.html"><b>&lt;-- Home</b></a>
-</nav>
+    <div>
+        <nav>
+            <a href="index.html"><b>&larr; Home</b></a>
+        </nav>
+    </div>
 
-<section>
-    <h1>Productivity Arena</h1> <!-- start of the productivity arena page, temporary values and texts are placed for now -->
-    <p>
-        The Productivity Arena helps you set and achieve your personal goals.
-        Track your tasks, use the Pomodoro timer, and earn points for your progress!
-    </p>
-    <hr>
-</section>
+    <section>
+        <h1>Productivity Arena</h1>
+        <p id="description">
+            The Productivity Arena helps you set and achieve your personal goals.
+            Track your tasks, use the Pomodoro timer, and earn points for your progress!
+        </p>
+        <hr>
+    </section>
 
-<section>
-    <h2>Set Your Goals</h2> <!-- you can set your goals here using editiable text boxes -->
-    <form>
-        <label for="goal">New Goal:</label><br>
-        <input type="text" id="goal" name="goal" placeholder="ex: Read for 30 minutes"><br><br>
+    <section class="goal-form">
+        <h2>Set Your Goals</h2>
+        <form>
+            <label for="goal">New Goal:</label>
+            <input type="text" id="goal" name="goal" placeholder="ex: Read for 30 minutes" required>
 
-        <label for="priority">Priority:</label><br>
-        <select id="priority" name="priority"> <!-- custom dropdown text menu to select priorty of the task-->
-            <option>Low</option>
-            <option>Medium</option>
-            <option selected>High</option>
-        </select><br><br>
+            <label for="priority">Priority:</label>
+            <select id="priority" name="priority" required>
+                <option value="" disabled hidden>Choose Priority</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High" selected>High</option>
+            </select>
 
-        <label for="deadline">Target Date:</label><br>
-        <input type="date" id="deadline" name="deadline"><br><br>
+            <label for="deadline">Target Date:</label>
+            <input type="date" id="deadline" name="deadline">
 
-        <input type="submit" value="Add Goal">
-    </form>
-    <hr>
-</section>
+            <input type="submit" value="Add Goal">
+        </form>
+        <hr>
+    </section>
 
-<section>
-    <h2>Today's Tasks</h2><!-- table that displays all tasks for the current day-->
-    <table border="1">
-        <caption>Active Goals</caption>
-        <tr>
-            <th>Task</th>
-            <th>Priority</th>
-            <th>Status</th>
-            <th>Action</th>
-        </tr>
-        <tr>
-            <td>Complete project proposal</td>
-            <td>High</td>
-            <td>In Progress</td>
-            <td><input type="checkbox"> Mark Complete</td> <!-- checkbox to mark it complete -->
-        </tr>
-        <tr>
-            <td>Exercise for 20 minutes</td>
-            <td>Medium</td>
-            <td>Not Started</td>
-            <td><input type="checkbox"> Mark Complete</td>
-        </tr>
-        <tr>
-            <td>Read 10 pages</td>
-            <td>Low</td>
-            <td>✓ Completed</td>
-            <td>Done!</td>
-        </tr>
-    </table>
-    <hr>
-</section>
+    <section class="mobile-table">
+        <h2>Today's Tasks</h2>
+        <table>
+            <caption>Active Goals</caption>
+            <tr>
+                <th>Task:</th>
+                <td>Complete project proposal</td>
+            </tr>
+            <tr>
+                <th>Priority:</th>
+                <td class="priority-high">High</td>
+            </tr>
+            <tr>
+                <th>Status:</th>
+                <td>In Progress</td>
+            </tr>
+            <tr>
+                <th>Action:</th>
+                <td><input type="checkbox"> Mark Complete</td>
+            </tr>
+            <tr><td colspan="2"><hr></td></tr>
+            <tr>
+                <th>Task:</th>
+                <td>Exercise for 20 minutes</td>
+            </tr>
+            <tr>
+                <th>Priority:</th>
+                <td class="priority-medium">Medium</td>
+            </tr>
+            <tr>
+                <th>Status:</th>
+                <td>Not Started</td>
+            </tr>
+            <tr>
+                <th>Action:</th>
+                <td><input type="checkbox"> Mark Complete</td>
+            </tr>
+            <tr><td colspan="2"><hr></td></tr>
+            <tr>
+                <th>Task:</th>
+                <td>Read 10 pages</td>
+            </tr>
+            <tr>
+                <th>Priority:</th>
+                <td class="priority-low">Low</td>
+            </tr>
+            <tr>
+                <th>Status:</th>
+                <td>✓ Completed</td>
+            </tr>
+            <tr>
+                <th>Action:</th>
+                <td>Done!</td>
+            </tr>
+        </table>
+        <hr>
+    </section>
 
-<section>
-    <h2>Pomodoro Timer</h2> <!-- pomodoro timer for tasks -->
-    <p>
-        Use the Pomodoro technique to stay focused! Work for 25 minutes, 
-        then take a 5-minute break.
-    </p>
-    
-    <form>
-        <label for="session-type">Session Type:</label><br>
-        <select id="session-type" name="session-type">
-            <option>Work (25 min)</option>
-            <option>Short Break (5 min)</option>
-            <option>Long Break (15 min)</option>
-        </select><br><br>
+    <section class="tablet-table">
+        <h2>Today's Tasks</h2>
+        <table>
+            <caption>Active Goals</caption>
+            <tr>
+                <th><u>Task</u></th>
+                <th><u>Priority</u></th>
+            </tr>
+            <tr>
+                <td>Complete project proposal</td>
+                <td class="priority-high">High</td>
+            </tr>
+            <tr>
+                <td>Exercise for 20 minutes</td>
+                <td class="priority-medium">Medium</td>
+            </tr>
+            <tr>
+                <td>Read 10 pages</td>
+                <td class="priority-low">Low</td>
+            </tr>
+            <tr>
+                <th><u>Status</u></th>
+                <th><u>Action</u></th>
+            </tr>
+            <tr>
+                <td>In Progress</td>
+                <td><input type="checkbox"> Mark Complete</td>
+            </tr>
+            <tr>
+                <td>Not Started</td>
+                <td><input type="checkbox"> Mark Complete</td>
+            </tr>
+            <tr>
+                <td>✓ Completed</td>
+                <td>Done!</td>
+            </tr>
+        </table>
+        <hr>
+    </section>
 
-        <label for="task-focus">What are you working on?</label><br>
-        <input type="text" id="task-focus" name="task-focus" placeholder="Focus task"><br><br>
+    <section class="desktop-table">
+        <h2>Today's Tasks</h2>
+        <table>
+            <caption>Active Goals</caption>
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Complete project proposal</td>
+                    <td class="priority-high">High</td>
+                    <td>In Progress</td>
+                    <td><input type="checkbox"> Mark Complete</td>
+                </tr>
+                <tr>
+                    <td>Exercise for 20 minutes</td>
+                    <td class="priority-medium">Medium</td>
+                    <td>Not Started</td>
+                    <td><input type="checkbox"> Mark Complete</td>
+                </tr>
+                <tr>
+                    <td>Read 10 pages</td>
+                    <td class="priority-low">Low</td>
+                    <td>✓ Completed</td>
+                    <td>Done!</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+    </section>
 
-        <input type="button" value="Start Timer">
-        <input type="button" value="Pause">
-        <input type="button" value="Reset">
-    </form>
+    <section class="timer-section">
+        <h2>Pomodoro Timer</h2>
+        <p>
+            Use the Pomodoro technique to stay focused! Work for 25 minutes, 
+            then take a 5-minute break.
+        </p>
+        
+        <form>
+            <label for="session-type">Session Type:</label>
+            <select id="session-type" name="session-type">
+                <option>Work (25 min)</option>
+                <option>Short Break (5 min)</option>
+                <option>Long Break (15 min)</option>
+            </select>
 
-    <p><strong>Time Remaining:</strong> 25:00</p>
-    <p><strong>Sessions Completed Today:</strong> 3 🍅🍅🍅</p>
-    <hr>
-</section>
+            <label for="task-focus">What are you working on?</label>
+            <input type="text" id="task-focus" name="task-focus" placeholder="Focus task">
 
-<section>
-    <h2>Progress Stats</h2>
-    <ul>
-        <li><strong>Current Streak:</strong> 7 days 🔥</li>
-        <li><strong>Total Points Earned:</strong> 850 ⭐</li>
-        <li><strong>Tasks Completed This Week:</strong> 12</li>
-        <li><strong>Focus Time This Week:</strong> 6 hours 15 minutes</li>
-    </ul>
-</section>
+            <div class="timer-controls">
+                <input type="button" value="Start Timer">
+                <input type="button" value="Pause">
+                <input type="button" value="Reset">
+            </div>
+        </form>
 
-<footer>
-    <p>&copy; 2026 AuraQuest</p>
-</footer>
+        <p class="timer-display">25:00</p>
+        <p><strong>Sessions Completed Today:</strong> <span class="emoji-large">3 🍅🍅🍅</span></p>
+        <hr>
+    </section>
+
+    <section class="stats-section">
+        <h2>Progress Stats</h2>
+        <ul>
+            <li><strong>Current Streak:</strong> 7 days 🔥</li>
+            <li><strong>Total Points Earned:</strong> 850 ⭐</li>
+            <li><strong>Tasks Completed This Week:</strong> 12</li>
+            <li><strong>Focus Time This Week:</strong> 6 hours 15 minutes</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 AuraQuest</p>
+    </footer>
 
 </body>
 </html>
