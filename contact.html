@@ -2,60 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AuraQuest | Contact</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="contactStyles.css">
 </head>
 
 <body>
-<nav>
-    <a href="index.html"><b>&lt;-- Home</b></a>
-</nav>
+    <div>
+        <nav>
+            <a href="index.html"><b>&larr; Home</b></a>
+        </nav>
+    </div>
 
-<section>
-    <h1>Contact Us</h1> <!-- This is the start of the contact us page its a basic description about the page-->
-    <p>
-        Have questions or feedback about AuraQuest? We'd love to hear from you!
-        Reach out to us using the information below.
-    </p>
-    <hr>
-</section>
+    <section>
+        <h1>Contact Us</h1>
+        <p id="description">
+            Have questions or feedback about AuraQuest? We'd love to hear from you!
+            Reach out to us using the information below and we'll get back to you as soon as possible.
+        </p>
+        <hr>
+    </section>
 
-<section>
-    <h2>Get in Touch</h2>
-    <p>
-        Our team is here to help you on your personal growth journey.
-        Feel free to contact us through any of the following methods:
-    </p>
-    
-    <ul> <!-- this is the contact information people can refer too if they neeed any assistance -->
-        <li><strong>Email:</strong> support@auraquest.com</li>
-        <li><strong>Phone:</strong> 1-800-AURA-QUEST (1-800-287-2783)</li>
-        <li><strong>Business Hours:</strong> Monday - Friday, 9:00 AM - 5:00 PM EST</li>
-    </ul>
-    <hr>
-</section>
+    <section class="contact-info">
+        <h2>Get in Touch</h2>
+        <p>
+            Our team is here to help you on your personal growth journey.
+            Feel free to contact us through any of the following methods:
+        </p>
+        
+        <ul>
+            <li><strong>Email:</strong> support@auraquest.com</li>
+            <li><strong>Phone:</strong> 1-800-AURA-QUEST (1-800-287-2783)</li>
+            <li><strong>Business Hours:</strong> Monday - Friday, 9:00 AM - 5:00 PM EST</li>
+        </ul>
+        <hr>
+    </section>
 
-<section> <!-- This section allows the user to directly input feedback instantly -->
-    <h2>Send Us a Message</h2>
-    <form>
-        <label for="name">Your Name:</label><br>
-        <input type="text" id="name" name="name" placeholder="Enter your name" required><br><br>
+    <section class="contact-form">
+        <h2>Send Us a Message</h2>
+        <form>
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
 
-        <label for="email">Your Email:</label><br>
-        <input type="email" id="email" name="email" placeholder="your.email@example.com" required><br><br>
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
 
-        <label for="subject">Subject:</label><br>
-        <input type="text" id="subject" name="subject" placeholder="How can we help?"><br><br>
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" placeholder="How can we help?" required>
 
-        <label for="message">Message:</label><br>
-        <textarea id="message" name="message" rows="5" cols="50" placeholder="Tell us what's on your mind..."></textarea><br><br>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
 
-        <input type="submit" value="Send Message">
-    </form>
-</section>
+            <input type="submit" value="Send Message">
+        </form>
+    </section>
 
-<footer>
-    <p>&copy; 2026 AuraQuest</p>
-</footer>
+    <footer>
+        <p>&copy; 2026 AuraQuest</p>
+    </footer>
 
 </body>
 </html>
