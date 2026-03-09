@@ -1,0 +1,123 @@
+/* Achievements Page Specific Styles */
+
+#description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #000;
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+/* Progress Overview Section */
+.progress-overview ul {
+    background-color: transparent;
+    padding: 0;
+    list-style: none;
+    margin-left: 0;
+}
+
+.progress-overview li {
+    padding: 0.5rem 0;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+/* Badge Tables */
+.desktop-table {
+    display: none;
+}
+
+.tablet-table {
+    display: none;
+    text-align: center;
+}
+
+.mobile-table {
+    display: block;
+}
+
+th {
+    font-size: 18px;
+}
+
+h2 {
+    text-align: left;
+}
+
+.unlocked-badges table {
+    border: none;
+}
+
+.unlocked-badges th {
+    background-color: transparent;
+}
+
+.locked-badges table {
+    border: none;
+}
+
+.locked-badges th {
+    background-color: transparent;
+}
+
+/* Badge Emoji Styling */
+.badge-emoji {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+/* Milestones Section */
+.milestones-section ol {
+    background-color: transparent;
+    padding: 0;
+    margin-left: 2rem;
+}
+
+.milestones-section li {
+    padding: 0.5rem 0;
+    margin-bottom: 0.5rem;
+}
+
+/* Challenge Section */
+.challenge-section {
+    background-color: transparent;
+    padding: 0;
+}
+
+.challenge-section form {
+    background-color: transparent;
+    padding: 0;
+}
+
+/* Points Badge */
+.points-badge {
+    display: inline-block;
+    background-color: transparent;
+    color: #000;
+    padding: 0;
+    font-weight: normal;
+}
+
+/* Tablet Display (768px and up) */
+@media (min-width: 768px) {
+    .tablet-table {
+        display: block;
+    }
+    .mobile-table {
+        display: none;
+    }
+}
+
+/* Desktop Display (1024px and up) */
+@media (min-width: 1024px) {
+    .tablet-table {
+        display: none;
+    }
+    .mobile-table {
+        display: none;
+    }
+    .desktop-table {
+        display: block;
+    }
+}
