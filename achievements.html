@@ -2,157 +2,471 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AuraQuest | Achievements</title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AuraQuest | Achievements</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="achievementsStyles.css">
 </head>
 
 <body>
-<nav>
-    <a href="index.html"><b>&lt;-- Home</b></a>
-</nav>
+    <div>
+        <nav>
+            <a href="index.html"><b>&larr; Home</b></a>
+        </nav>
+    </div>
 
-<section>
-    <h1>Achievement System</h1> <!-- basic description of the page -->
-    <p>
-        Track your progress and unlock rewards! Earn badges for completing goals,
-        maintaining streaks, and reaching milestones on your personal growth journey.
-    </p>
-    <hr>
-</section>
+    <section>
+        <h1>Achievement System</h1>
+        <p id="description">
+            Track your progress and unlock rewards! Earn badges for completing goals,
+            maintaining streaks, and reaching milestones on your personal growth journey.
+        </p>
+        <hr>
+    </section>
 
-<section>
-    <h2>Your Progress</h2> <!-- current progress  -->
-    <ul>
-        <li><strong>Total Points:</strong> 1,250 ⭐</li>
-        <li><strong>Current Level:</strong> 8</li>
-        <li><strong>Badges Earned:</strong> 15 / 30</li>
-        <li><strong>Progress to Next Level:</strong> 750 / 1,000 XP</li>
-    </ul>
-    <hr>
-</section>
+    <section class="progress-overview">
+        <h2>Your Progress</h2>
+        <ul>
+            <li><strong>Total Points:</strong> 1,250 ⭐</li>
+            <li><strong>Current Level:</strong> 8</li>
+            <li><strong>Badges Earned:</strong> 15 / 30</li>
+            <li><strong>Progress to Next Level:</strong> 750 / 1,000 XP</li>
+        </ul>
+        <hr>
+    </section>
 
-<section>
-    <h2>Unlocked Achievements</h2> <!-- unchievements that have been unlocked so far, placeholder text has been used for now to create a example-->
-    <table border="1">
-        <caption>Your Earned Badges</caption>
-        <tr>
-            <th>Badge</th>
-            <th>Achievement</th>
-            <th>Date Earned</th>
-            <th>Points</th>
-        </tr>
-        <tr>
-            <td>🏆</td>
-            <td>First Steps - Complete your first goal</td>
-            <td>January 15, 2026</td>
-            <td>50</td>
-        </tr>
-        <tr>
-            <td>🔥</td>
-            <td>Week Warrior - Maintain a 7-day streak</td>
-            <td>January 22, 2026</td>
-            <td>100</td>
-        </tr>
-        <tr>
-            <td>💧</td>
-            <td>Hydration Hero - Log 8 cups of water for 5 days</td>
-            <td>January 28, 2026</td>
-            <td>75</td>
-        </tr>
-        <tr>
-            <td>🍅</td>
-            <td>Focus Master - Complete 10 Pomodoro sessions</td>
-            <td>January 30, 2026</td>
-            <td>100</td>
-        </tr>
-        <tr>
-            <td>💪</td>
-            <td>Consistency King - Exercise 3 times this week</td>
-            <td>February 01, 2026</td>
-            <td>150</td>
-        </tr>
-    </table>
-    <hr>
-</section>
+    <section class="unlocked-badges mobile-table">
+        <h2>Unlocked Achievements</h2>
+        <table>
+            <caption>Your Earned Badges</caption>
+            <tr>
+                <th>Badge:</th>
+                <td class="badge-emoji">🏆</td>
+            </tr>
+            <tr>
+                <th>Achievement:</th>
+                <td>First Steps - Complete your first goal</td>
+            </tr>
+            <tr>
+                <th>Date Earned:</th>
+                <td>January 15, 2026</td>
+            </tr>
+            <tr>
+                <th>Points:</th>
+                <td><span class="points-badge">+50</span></td>
+            </tr>
+            <tr><td colspan="2"><hr></td></tr>
+            <tr>
+                <th>Badge:</th>
+                <td class="badge-emoji">🔥</td>
+            </tr>
+            <tr>
+                <th>Achievement:</th>
+                <td>Week Warrior - Maintain a 7-day streak</td>
+            </tr>
+            <tr>
+                <th>Date Earned:</th>
+                <td>January 22, 2026</td>
+            </tr>
+            <tr>
+                <th>Points:</th>
+                <td><span class="points-badge">+100</span></td>
+            </tr>
+            <tr><td colspan="2"><hr></td></tr>
+            <tr>
+                <th>Badge:</th>
+                <td class="badge-emoji">💧</td>
+            </tr>
+            <tr>
+                <th>Achievement:</th>
+                <td>Hydration Hero - Log 8 cups of water for 5 days</td>
+            </tr>
+            <tr>
+                <th>Date Earned:</th>
+                <td>January 28, 2026</td>
+            </tr>
+            <tr>
+                <th>Points:</th>
+                <td><span class="points-badge">+75</span></td>
+            </tr>
+            <tr><td colspan="2"><hr></td></tr>
+            <tr>
+                <th>Badge:</th>
+                <td class="badge-emoji">🍅</td>
+            </tr>
+            <tr>
+                <th>Achievement:</th>
+                <td>Focus Master - Complete 10 Pomodoro sessions</td>
+            </tr>
+            <tr>
+                <th>Date Earned:</th>
+                <td>January 30, 2026</td>
+            </tr>
+            <tr>
+                <th>Points:</th>
+                <td><span class="points-badge">+100</span></td>
+            </tr>
+            <tr><td colspan="2"><hr></td></tr>
+            <tr>
+                <th>Badge:</th>
+                <td class="badge-emoji">💪</td>
+            </tr>
+            <tr>
+                <th>Achievement:</th>
+                <td>Consistency King - Exercise 3 times this week</td>
+            </tr>
+            <tr>
+                <th>Date Earned:</th>
+                <td>February 01, 2026</td>
+            </tr>
+            <tr>
+                <th>Points:</th>
+                <td><span class="points-badge">+150</span></td>
+            </tr>
+        </table>
+        <hr>
+    </section>
 
-<section>
-    <h2>Locked Achievements</h2> <!-- locked achievements -->
-    <p>Keep working towards these upcoming milestones!</p>
-    
-    <table border="1">
-        <caption>Achievements to Unlock</caption>
-        <tr>
-            <th>Badge</th>
-            <th>Achievement</th>
-            <th>Progress</th>
-            <th>Reward</th>
-        </tr>
-        <tr>
-            <td>🌟</td>
-            <td>Rising Star - Reach Level 10</td>
-            <td>Level 8 / 10</td>
-            <td>200 points</td>
-        </tr>
-        <tr>
-            <td>📚</td>
-            <td>Knowledge Seeker - Complete 50 tasks</td>
-            <td>32 / 50</td>
-            <td>150 points</td>
-        </tr>
-        <tr>
-            <td>🎯</td>
-            <td>Sharpshooter - Complete 10 high-priority goals</td>
-            <td>6 / 10</td>
-            <td>175 points</td>
-        </tr>
-        <tr>
-            <td>⏰</td>
-            <td>Time Master - Complete 50 Pomodoro sessions</td>
-            <td>23 / 50</td>
-            <td>250 points</td>
-        </tr>
-        <tr>
-            <td>💎</td>
-            <td>Diamond Dedication - Maintain a 30-day streak</td>
-            <td>7 / 30 days</td>
-            <td>500 points</td>
-        </tr>
-    </table>
-    <hr>
-</section>
+    <section class="unlocked-badges tablet-table">
+        <h2>Unlocked Achievements</h2>
+        <table>
+            <caption>Your Earned Badges</caption>
+            <tr>
+                <th><u>Badge</u></th>
+                <th><u>Achievement</u></th>
+            </tr>
+            <tr>
+                <td class="badge-emoji">🏆</td>
+                <td>First Steps - Complete your first goal</td>
+            </tr>
+            <tr>
+                <td class="badge-emoji">🔥</td>
+                <td>Week Warrior - Maintain a 7-day streak</td>
+            </tr>
+            <tr>
+                <td class="badge-emoji">💧</td>
+                <td>Hydration Hero - Log 8 cups of water for 5 days</td>
+            </tr>
+            <tr>
+                <td class="badge-emoji">🍅</td>
+                <td>Focus Master - Complete 10 Pomodoro sessions</td>
+            </tr>
+            <tr>
+                <td class="badge-emoji">💪</td>
+                <td>Consistency King - Exercise 3 times this week</td>
+            </tr>
+            <tr>
+                <th><u>Date Earned</u></th>
+                <th><u>Points</u></th>
+            </tr>
+            <tr>
+                <td>January 15, 2026</td>
+                <td><span class="points-badge">+50</span></td>
+            </tr>
+            <tr>
+                <td>January 22, 2026</td>
+                <td><span class="points-badge">+100</span></td>
+            </tr>
+            <tr>
+                <td>January 28, 2026</td>
+                <td><span class="points-badge">+75</span></td>
+            </tr>
+            <tr>
+                <td>January 30, 2026</td>
+                <td><span class="points-badge">+100</span></td>
+            </tr>
+            <tr>
+                <td>February 01, 2026</td>
+                <td><span class="points-badge">+150</span></td>
+            </tr>
+        </table>
+        <hr>
+    </section>
 
-<section>
-    <h2>Recent Milestones</h2> <!-- list of milestones completed alongside how many points have been awards and the date of completion -->
-    <ol>
-        <li><strong>February 01:</strong> Unlocked "Consistency King" badge! 💪 (+150 points)</li>
-        <li><strong>January 30:</strong> Unlocked "Focus Master" badge! 🍅 (+100 points)</li>
-        <li><strong>January 28:</strong> Unlocked "Hydration Hero" badge! 💧 (+75 points)</li>
-        <li><strong>January 22:</strong> Unlocked "Week Warrior" badge! 🔥 (+100 points)</li>
-        <li><strong>January 15:</strong> Unlocked "First Steps" badge! 🏆 (+50 points)</li>
-    </ol>
-</section>
+    <section class="unlocked-badges desktop-table">
+        <h2>Unlocked Achievements</h2>
+        <table>
+            <caption>Your Earned Badges</caption>
+            <thead>
+                <tr>
+                    <th>Badge</th>
+                    <th>Achievement</th>
+                    <th>Date Earned</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="badge-emoji">🏆</td>
+                    <td>First Steps - Complete your first goal</td>
+                    <td>January 15, 2026</td>
+                    <td><span class="points-badge">+50</span></td>
+                </tr>
+                <tr>
+                    <td class="badge-emoji">🔥</td>
+                    <td>Week Warrior - Maintain a 7-day streak</td>
+                    <td>January 22, 2026</td>
+                    <td><span class="points-badge">+100</span></td>
+                </tr>
+                <tr>
+                    <td class="badge-emoji">💧</td>
+                    <td>Hydration Hero - Log 8 cups of water for 5 days</td>
+                    <td>January 28, 2026</td>
+                    <td><span class="points-badge">+75</span></td>
+                </tr>
+                <tr>
+                    <td class="badge-emoji">🍅</td>
+                    <td>Focus Master - Complete 10 Pomodoro sessions</td>
+                    <td>January 30, 2026</td>
+                    <td><span class="points-badge">+100</span></td>
+                </tr>
+                <tr>
+                    <td class="badge-emoji">💪</td>
+                    <td>Consistency King - Exercise 3 times this week</td>
+                    <td>February 01, 2026</td>
+                    <td><span class="points-badge">+150</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+    </section>
 
-<section>
-    <h2>Challenge Yourself</h2>
-    <p>
-        Take on special challenges to earn bonus points and exclusive badges!
-    </p>
-    
-    <form>
-        <label for="challenge">Select a Challenge:</label><br> <!-- can select a challenge you want to achieve within the set date per achievement -->
-        <select id="challenge" name="challenge">
-            <option>Weekend Warrior - Complete 5 tasks this weekend</option>
-            <option>Health Hero - Log all health metrics for 7 days</option>
-            <option>Budget Boss - Stay under budget for the month</option>
-            <option>Meditation Master - Practice mindfulness daily for a week</option>
-        </select><br><br>
+    <section class="locked-badges mobile-table">
+        <h2>Locked Achievements</h2>
+        <p>Keep working towards these upcoming milestones!</p>
+        
+        <table>
+            <caption>Achievements to Unlock</caption>
+            <tr>
+                <th>Badge:</th>
+                <td class="badge-emoji">🌟</td>
+            </tr>
+            <tr>
+                <th>Achievement:</th>
+                <td>Rising Star - Reach Level 10</td>
+            </tr>
+            <tr>
+                <th>Progress:</th>
+                <td>Level 8 / 10</td>
+            </tr>
+            <tr>
+                <th>Reward:</th>
+                <td>200 points</td>
+            </tr>
+            <tr><td colspan="2"><hr></td></tr>
+            <tr>
+                <th>Badge:</th>
+                <td class="badge-emoji">📚</td>
+            </tr>
+            <tr>
+                <th>Achievement:</th>
+                <td>Knowledge Seeker - Complete 50 tasks</td>
+            </tr>
+            <tr>
+                <th>Progress:</th>
+                <td>32 / 50</td>
+            </tr>
+            <tr>
+                <th>Reward:</th>
+                <td>150 points</td>
+            </tr>
+            <tr><td colspan="2"><hr></td></tr>
+            <tr>
+                <th>Badge:</th>
+                <td class="badge-emoji">🎯</td>
+            </tr>
+            <tr>
+                <th>Achievement:</th>
+                <td>Sharpshooter - Complete 10 high-priority goals</td>
+            </tr>
+            <tr>
+                <th>Progress:</th>
+                <td>6 / 10</td>
+            </tr>
+            <tr>
+                <th>Reward:</th>
+                <td>175 points</td>
+            </tr>
+            <tr><td colspan="2"><hr></td></tr>
+            <tr>
+                <th>Badge:</th>
+                <td class="badge-emoji">⏰</td>
+            </tr>
+            <tr>
+                <th>Achievement:</th>
+                <td>Time Master - Complete 50 Pomodoro sessions</td>
+            </tr>
+            <tr>
+                <th>Progress:</th>
+                <td>23 / 50</td>
+            </tr>
+            <tr>
+                <th>Reward:</th>
+                <td>250 points</td>
+            </tr>
+            <tr><td colspan="2"><hr></td></tr>
+            <tr>
+                <th>Badge:</th>
+                <td class="badge-emoji">💎</td>
+            </tr>
+            <tr>
+                <th>Achievement:</th>
+                <td>Diamond Dedication - Maintain a 30-day streak</td>
+            </tr>
+            <tr>
+                <th>Progress:</th>
+                <td>7 / 30 days</td>
+            </tr>
+            <tr>
+                <th>Reward:</th>
+                <td>500 points</td>
+            </tr>
+        </table>
+        <hr>
+    </section>
 
-        <input type="submit" value="Accept Challenge">
-    </form>
-</section>
+    <section class="locked-badges tablet-table">
+        <h2>Locked Achievements</h2>
+        <p>Keep working towards these upcoming milestones!</p>
+        
+        <table>
+            <caption>Achievements to Unlock</caption>
+            <tr>
+                <th><u>Badge</u></th>
+                <th><u>Achievement</u></th>
+            </tr>
+            <tr>
+                <td class="badge-emoji">🌟</td>
+                <td>Rising Star - Reach Level 10</td>
+            </tr>
+            <tr>
+                <td class="badge-emoji">📚</td>
+                <td>Knowledge Seeker - Complete 50 tasks</td>
+            </tr>
+            <tr>
+                <td class="badge-emoji">🎯</td>
+                <td>Sharpshooter - Complete 10 high-priority goals</td>
+            </tr>
+            <tr>
+                <td class="badge-emoji">⏰</td>
+                <td>Time Master - Complete 50 Pomodoro sessions</td>
+            </tr>
+            <tr>
+                <td class="badge-emoji">💎</td>
+                <td>Diamond Dedication - Maintain a 30-day streak</td>
+            </tr>
+            <tr>
+                <th><u>Progress</u></th>
+                <th><u>Reward</u></th>
+            </tr>
+            <tr>
+                <td>Level 8 / 10</td>
+                <td>200 points</td>
+            </tr>
+            <tr>
+                <td>32 / 50</td>
+                <td>150 points</td>
+            </tr>
+            <tr>
+                <td>6 / 10</td>
+                <td>175 points</td>
+            </tr>
+            <tr>
+                <td>23 / 50</td>
+                <td>250 points</td>
+            </tr>
+            <tr>
+                <td>7 / 30 days</td>
+                <td>500 points</td>
+            </tr>
+        </table>
+        <hr>
+    </section>
 
-<footer>
-    <p>&copy; 2026 AuraQuest</p>
-</footer>
+    <section class="locked-badges desktop-table">
+        <h2>Locked Achievements</h2>
+        <p>Keep working towards these upcoming milestones!</p>
+        
+        <table>
+            <caption>Achievements to Unlock</caption>
+            <thead>
+                <tr>
+                    <th>Badge</th>
+                    <th>Achievement</th>
+                    <th>Progress</th>
+                    <th>Reward</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="badge-emoji">🌟</td>
+                    <td>Rising Star - Reach Level 10</td>
+                    <td>Level 8 / 10</td>
+                    <td>200 points</td>
+                </tr>
+                <tr>
+                    <td class="badge-emoji">📚</td>
+                    <td>Knowledge Seeker - Complete 50 tasks</td>
+                    <td>32 / 50</td>
+                    <td>150 points</td>
+                </tr>
+                <tr>
+                    <td class="badge-emoji">🎯</td>
+                    <td>Sharpshooter - Complete 10 high-priority goals</td>
+                    <td>6 / 10</td>
+                    <td>175 points</td>
+                </tr>
+                <tr>
+                    <td class="badge-emoji">⏰</td>
+                    <td>Time Master - Complete 50 Pomodoro sessions</td>
+                    <td>23 / 50</td>
+                    <td>250 points</td>
+                </tr>
+                <tr>
+                    <td class="badge-emoji">💎</td>
+                    <td>Diamond Dedication - Maintain a 30-day streak</td>
+                    <td>7 / 30 days</td>
+                    <td>500 points</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+    </section>
+
+    <section class="milestones-section">
+        <h2>Recent Milestones</h2>
+        <ol>
+            <li><strong>February 01:</strong> Unlocked "Consistency King" badge! 💪 (+150 points)</li>
+            <li><strong>January 30:</strong> Unlocked "Focus Master" badge! 🍅 (+100 points)</li>
+            <li><strong>January 28:</strong> Unlocked "Hydration Hero" badge! 💧 (+75 points)</li>
+            <li><strong>January 22:</strong> Unlocked "Week Warrior" badge! 🔥 (+100 points)</li>
+            <li><strong>January 15:</strong> Unlocked "First Steps" badge! 🏆 (+50 points)</li>
+        </ol>
+    </section>
+
+    <section class="challenge-section">
+        <h2>Challenge Yourself</h2>
+        <p>
+            Take on special challenges to earn bonus points and exclusive badges!
+        </p>
+        
+        <form>
+            <label for="challenge">Select a Challenge:</label>
+            <select id="challenge" name="challenge">
+                <option value="" disabled selected hidden>Choose a Challenge</option>
+                <option>Weekend Warrior - Complete 5 tasks this weekend</option>
+                <option>Health Hero - Log all health metrics for 7 days</option>
+                <option>Budget Boss - Stay under budget for the month</option>
+                <option>Meditation Master - Practice mindfulness daily for a week</option>
+            </select>
+
+            <input type="submit" value="Accept Challenge">
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 AuraQuest</p>
+    </footer>
 
 </body>
 </html>
