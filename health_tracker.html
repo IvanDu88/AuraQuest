@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AuraQuest | Health Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="healthStyles.css">
 </head>
 
 <body>
@@ -19,7 +22,7 @@
     <hr>
 </section>
 
-<section>
+<section id="log">
     <h2>Daily Health Log</h2>
     <form>
         <label for="water">Water Intake (cups):</label><br>
@@ -46,30 +49,39 @@
 
 <section>
     <h2>Wellness Summary</h2>
-        <table border="1">
+
+    <table border="1">
         <caption>Today's Wellness Metrics</caption>
+
         <tr>
             <th>Habit</th>
             <th>Status</th>
         </tr>
+
         <tr>
             <td>Water Intake</td>
-            <td>💧 Good</td>
+            <td id="waterStatus">No data yet</td>
         </tr>
+
         <tr>
             <td>Sleep</td>
-            <td>😴 Needs Improvement</td>
+            <td id="sleepStatus">No data yet</td>
         </tr>
+
         <tr>
             <td>Exercise</td>
-            <td>🏃 Completed</td>
+            <td id="exerciseStatus">No data yet</td>
         </tr>
+
         <tr>
             <td>Meals</td>
-            <td>🍽 Balanced</td>
+            <td id="mealsStatus">No data yet</td>
         </tr>
+
     </table>
+
 </section>
+
 
 <footer>
     <p>&copy; 2026 AuraQuest</p>

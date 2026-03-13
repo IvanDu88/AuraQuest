@@ -1,0 +1,59 @@
+section{
+    margin: 20px;
+}
+nav{
+    margin: 10px;
+}
+body{
+    text-align: center;
+}
+form{
+    background-color: rgb(220, 240, 200);
+    padding: 15px;
+    width: 320px;
+    border-radius: 8px;
+    border: 2px solid rgb(120,150,90);
+    margin:auto;
+}
+label{
+    font-size: 16px;
+}
+input, select{
+    width: 95%;
+    padding: 6px;        
+    margin-top: 6px;
+    border-radius: 6px;
+    border: 1px solid gray;
+    font-family: monospace;
+    font-size: 16px;      
+}
+input[type="submit"]{
+    background-color: rgb(120,170,100);
+    color: white;
+    font-weight: bold;
+}
+input[type="submit"]:hover{
+    background-color: rgb(90,140,70);
+}
+table{
+    border-collapse: collapse;
+    width: 350px;
+    background-color: rgb(230,245,220);
+    margin: auto;
+}
+caption{
+    font-weight: bold;
+    padding: 8px;
+    font-size: 18px;
+}
+
+th{
+    background-color: rgb(170,210,150);
+    padding: 8px;
+}
+
+td{
+    padding: 8px;
+    text-align: center;
+}
+
