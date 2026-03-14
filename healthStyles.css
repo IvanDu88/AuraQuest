@@ -10,10 +10,14 @@ body{
 form{
     background-color: rgb(220, 240, 200);
     padding: 15px;
-    width: 320px;
+    width: 90%;
     border-radius: 8px;
     border: 2px solid rgb(120,150,90);
     margin:auto;
+}
+.home-container{
+    text-align: left;
+    margin: 0 auto;
 }
 label{
     font-size: 16px;
@@ -55,5 +59,72 @@ th{
 td{
     padding: 8px;
     text-align: center;
+}
+
+.mobile-health {
+    display: block;
+}
+
+.tablet-health, .desktop-health {
+    display: none;
+}
+@media (min-width: 768px) {
+    .mobile-health {
+        display: none;
+    }
+
+    .tablet-health {
+        display: block;
+    }
+
+    form {
+        width: 500px;
+        padding: 20px;
+    }
+
+    input, select {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    input[type="submit"] {
+        font-size: 18px;
+        padding: 12px 20px;
+    }
+
+    table {
+        width: 70%;
+    }
+}
+@media (min-width: 1024px) {
+    .tablet-health {
+        display: none;
+    }
+
+    .desktop-health {
+        display: block;
+    }
+
+    form {
+        width: 600px;
+        padding: 25px;
+    }
+
+    input, select {
+        font-size: 18px;
+        padding: 12px;
+    }
+
+    input[type="submit"] {
+        font-size: 18px;
+        padding: 14px 24px;
+    }
+
+    table {
+        width: 60%;
+    }
+    .home-container {
+        text-align: left;
+    }
 }
 

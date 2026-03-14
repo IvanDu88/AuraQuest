@@ -9,8 +9,8 @@
 </head>
 
 <body>
-<nav>
-    <a href="index.html"><b>&larr; Home</b></a>
+<nav class="home-container">
+    <a href="index.html" class="home"><b>&larr; Home</b></a>
 </nav>
 
 <section>
@@ -21,7 +21,68 @@
     </p>
     <hr>
 </section>
+<section class="mobile-health">
+    <section id="log">
+    <h2>Daily Health Log</h2>
+    <form>
+        <label for="water">Water Intake (cups):</label><br>
+        <input type="number" id="water" name="water" placeholder="ex: 8"><br><br>
 
+        <label for="sleep">Sleep (hours):</label><br>
+        <input type="number" id="sleep" name="sleep" placeholder="ex: 7"><br><br>
+
+        <label for="exercise">Exercise (minutes):</label><br>
+        <input type="number" id="exercise" name="exercise" placeholder="ex: 30"><br><br>
+
+        <label for="meals">Meals Eaten:</label><br>
+        <select id="meals" name="meals">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4+</option>
+        </select><br><br>
+
+        <input type="submit" value="Log Today">
+    </form>
+    <hr>
+    </section>
+    <section>
+    <h2>Wellness Summary</h2>
+
+    <table border="1">
+        <caption>Today's Wellness Metrics</caption>
+
+        <tr>
+            <th>Habit</th>
+            <th>Status</th>
+        </tr>
+
+        <tr>
+            <td>Water Intake</td>
+            <td id="waterStatus">No data yet</td>
+        </tr>
+
+        <tr>
+            <td>Sleep</td>
+            <td id="sleepStatus">No data yet</td>
+        </tr>
+
+        <tr>
+            <td>Exercise</td>
+            <td id="exerciseStatus">No data yet</td>
+        </tr>
+
+        <tr>
+            <td>Meals</td>
+            <td id="mealsStatus">No data yet</td>
+        </tr>
+
+    </table>
+
+    </section>
+</section>
+
+<section  class="desktop-health">
 <section id="log">
     <h2>Daily Health Log</h2>
     <form>
@@ -81,7 +142,69 @@
     </table>
 
 </section>
+</section>
 
+<section  class="tablet-health">
+<section id="log">
+    <h2>Daily Health Log</h2>
+    <form>
+        <label for="water">Water Intake (cups):</label><br>
+        <input type="number" id="water" name="water" placeholder="ex: 8"><br><br>
+
+        <label for="sleep">Sleep (hours):</label><br>
+        <input type="number" id="sleep" name="sleep" placeholder="ex: 7"><br><br>
+
+        <label for="exercise">Exercise (minutes):</label><br>
+        <input type="number" id="exercise" name="exercise" placeholder="ex: 30"><br><br>
+
+        <label for="meals">Meals Eaten:</label><br>
+        <select id="meals" name="meals">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4+</option>
+        </select><br><br>
+
+        <input type="submit" value="Log Today">
+    </form>
+    <hr>
+</section>
+
+<section>
+    <h2>Wellness Summary</h2>
+
+    <table border="1">
+        <caption>Today's Wellness Metrics</caption>
+
+        <tr>
+            <th>Habit</th>
+            <th>Status</th>
+        </tr>
+
+        <tr>
+            <td>Water Intake</td>
+            <td id="waterStatus">No data yet</td>
+        </tr>
+
+        <tr>
+            <td>Sleep</td>
+            <td id="sleepStatus">No data yet</td>
+        </tr>
+
+        <tr>
+            <td>Exercise</td>
+            <td id="exerciseStatus">No data yet</td>
+        </tr>
+
+        <tr>
+            <td>Meals</td>
+            <td id="mealsStatus">No data yet</td>
+        </tr>
+
+    </table>
+
+</section>
+</section>
 
 <footer>
     <p>&copy; 2026 AuraQuest</p>
