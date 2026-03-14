@@ -17,6 +17,55 @@ h2{
     text-align: left;
 }
 
+input, select{
+    padding: 6px;        
+    margin-top: 6px;
+    border-radius: 6px;
+    border: 1px solid gray;
+    font-family: monospace;
+    font-size: 16px;      
+}
+
+input[type="number"], select{
+    width: 350px;
+}
+
+input[type="submit"]{
+    background-color: rgb(120,170,100);
+    color: white;
+    font-weight: bold;
+    width: 350px;
+}
+
+input[type="reset"] {
+    background-color: rgb(120,170,100);
+    color: white;
+    font-weight: bold;
+    width: 150px;
+}
+
+th{
+    border: 1px solid black;
+    background-color: rgb(170,210,150);
+    padding: 8px;
+}
+
+td{
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+    background-color: rgb(220, 240, 200);
+}
+
+input[type="submit"]:hover{
+    background-color: rgb(90,140,70);
+}
+
+input[type="reset"]:hover{
+    background-color: rgb(90,140,70);
+    color:red;
+}
+
 
 
 @media (min-width:768px) {
@@ -25,6 +74,34 @@ h2{
     }
     .mobile-table {
         display:none;
+    }
+
+    table{
+        border-collapse: collapse;
+    }
+
+    th{
+        border: 1px solid black;
+        background-color: rgb(170,210,150);
+        padding: 8px;
+    }
+
+    td{
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+        background-color: rgb(220, 240, 200);
+    }
+
+    input[type="number"], select{
+        width: 50%;
+    }
+
+    input[type="submit"],[type="reset"]{
+        background-color: rgb(120,170,100);
+        color: white;
+        font-weight: bold;
+        width: 50%;
     }
 }
 
