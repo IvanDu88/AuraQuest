@@ -1,9 +1,11 @@
+/* Contact Page Specific Styles */
+
 .desktop-table {
     display: none;
 }
 
 .tablet-table {
-    display:none;
+    display: none;
     text-align: center;
 }
 
@@ -11,11 +13,11 @@ th {
     font-size: 18px;
 }
 
-h2{
+h2 {
     text-align: left;
 }
 
-input, select{
+input, select {
     padding: 6px;        
     margin-top: 6px;
     border-radius: 6px;
@@ -46,6 +48,12 @@ textarea {
     resize: vertical;
     width: 100%;
     max-width: 500px;
+    padding: 6px;        
+    margin-top: 6px;
+    border-radius: 6px;
+    border: 1px solid gray;
+    font-family: monospace;
+    font-size: 16px;
 }
 
 /* Responsive Design for Contact Page */
