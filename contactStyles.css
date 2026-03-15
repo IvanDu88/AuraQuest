@@ -1,6 +1,6 @@
 /* Contact Page Specific Styles */
 
-
+/* Push footer to bottom of page */
 html, body {
     height: 100%;
     margin: 0;
@@ -46,7 +46,7 @@ input, select {
     font-size: 16px;      
 }
 
-
+/* Contact Info Section */
 .contact-info ul {
     list-style: none;
     margin-left: 0;
@@ -57,7 +57,7 @@ input, select {
     margin-bottom: 0.5rem;
 }
 
-
+/* Contact Form Styling */
 .contact-form {
     background-color: transparent;
     padding: 0;
@@ -90,10 +90,16 @@ textarea {
     max-width: 500px;
     padding: 6px;        
     margin-top: 6px;
+    margin-bottom: 10px;
     border-radius: 6px;
     border: 1px solid gray;
     font-family: monospace;
     font-size: 16px;
+}
+
+.contact-form label[for="message"] {
+    display: block;
+    width: 100%;
 }
 
 /* Tablet */
@@ -117,7 +123,7 @@ textarea {
     }
 }
 
-/* mobile */
+/* Mobile /
 @media screen and (max-width: 480px) {
     textarea {
         width: 100%;
