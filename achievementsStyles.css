@@ -1,12 +1,11 @@
-/* Achievements Page Specific Styles */
 
-#description {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #000;
-    background-color: transparent;
-    padding: 0;
-    margin-bottom: 1rem;
+.desktop-table {
+    display: none;
+}
+
+.tablet-table {
+    display:none;
+    text-align: center;
 }
 
 /* Progress Overview Section */
