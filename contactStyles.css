@@ -67,19 +67,27 @@ input, select {
     display: block;
 }
 
+/* Mobile First */
 .contact-form label {
-    display: inline-block;
-    width: auto;
-    margin-right: 10px;
+    display: block;
+    width: 100%;
+    margin-right: 0;
 }
 
 .contact-form input[type="text"],
 .contact-form input[type="email"] {
-    display: inline-block;
-    width: auto;
-    min-width: 200px;
-    margin-right: 20px;
+    display: block;
+    width: 100%;
+    margin-right: 0;
     margin-bottom: 10px;
+}
+
+/* Message label  */
+.contact-form label[for="message"] {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+    margin-top: 10px;
 }
 
 textarea {
@@ -97,35 +105,25 @@ textarea {
     font-size: 16px;
 }
 
-.contact-form label[for="message"] {
-    display: block;
-    width: 100%;
-}
-
 /* Tablet */
-@media screen and (max-width: 768px) {
-    .contact-form label {
-        display: block;
-        width: 100%;
-        margin-right: 0;
+@media (min-width: 768px) {
+    .contact-form label:not([for="message"]) {
+        display: inline-block;
+        width: auto;
+        margin-right: 10px;
     }
 
     .contact-form input[type="text"],
     .contact-form input[type="email"] {
-        display: block;
-        width: 100%;
-        margin-right: 0;
+        display: inline-block;
+        width: auto;
+        min-width: 200px;
+        margin-right: 20px;
         margin-bottom: 10px;
-    }
-
-    textarea {
-        width: 100%;
     }
 }
 
-/* Mobile /
-@media screen and (max-width: 480px) {
-    textarea {
-        width: 100%;
-    }
+/* Desktop */
+@media (min-width: 1024px) {
+    /* Keep inline layout from tablet */
 }
