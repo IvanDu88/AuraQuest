@@ -1,5 +1,25 @@
 /* Contact Page Specific Styles */
 
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+body > div,
+body > section {
+    flex: 0 0 auto;
+}
+
+footer {
+    margin-top: auto;
+}
+
 .desktop-table {
     display: none;
 }
@@ -26,7 +46,7 @@ input, select {
     font-size: 16px;      
 }
 
-/* Contact Info Section */
+
 .contact-info ul {
     list-style: none;
     margin-left: 0;
@@ -37,7 +57,7 @@ input, select {
     margin-bottom: 0.5rem;
 }
 
-/* Contact Form Styling */
+
 .contact-form {
     background-color: transparent;
     padding: 0;
@@ -76,7 +96,7 @@ textarea {
     font-size: 16px;
 }
 
-/*tablet*/
+/* Tablet */
 @media screen and (max-width: 768px) {
     .contact-form label {
         display: block;
@@ -97,7 +117,7 @@ textarea {
     }
 }
 
-/*phone*/
+/* mobile */
 @media screen and (max-width: 480px) {
     textarea {
         width: 100%;
