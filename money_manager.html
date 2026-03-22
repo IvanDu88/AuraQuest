@@ -6,6 +6,7 @@
     <title>AuraQuest | Money Manager</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="moneyStyles.css">
+    <script src="moneyScript.js" type="text/javascript" defer></script>
 </head>
 <body>
     <div><!--This section shows the button to go home-->
@@ -22,7 +23,7 @@
             <h2><label for="Budget">Budget:</label></h2>
             <input type="number" placeholder="ex: $1234.56" name="Budget" id="Budget" required>
             <h2><label for="Savings">Savings Goal:</label></h2>
-            <input type="number" placeholder="ex: $1234.56" name="Savings" id="Savings" required><br><br>
+            <input type="number" placeholder="ex: $1234.56 (Recommended 20%)" name="Savings" id="Savings" required><br><br>
             <input type="submit" value="Submit Budget and Savings Goal">
         </form>
         <hr>
@@ -46,7 +47,7 @@
         </form>
         <hr>
     </div>
-    <section class="mobile-table"><h2>Remaining Money: ____</h2>
+    <section class="mobile-table"><h2 id="money1">Remaining Money: ____</h2>
         <hr>
             <table>
             <caption><h3>Spending Summary</h3></caption>
@@ -77,7 +78,7 @@
         </table>
         
     </section>
-        <section class="tablet-table"><h2>Remaining Money: ____</h2>
+        <section class="tablet-table"><h2 id="money2">Remaining Money: ____</h2>
         <hr>
             <table>
             <caption><h3>Spending Summary</h3></caption>
@@ -108,7 +109,7 @@
         </table>
         
     </section>
-    <section class="desktop-table"><h2>Remaining Money: ____</h2> <!--This section will display a table with options to enter spendings in pre-set categories (food, personal, savings, family, transportation, school/housing)-->
+    <section class="desktop-table"><h2 id="money3">Remaining Money: ____</h2> <!--This section will display a table with options to enter spendings in pre-set categories (food, personal, savings, family, transportation, school/housing)-->
         <hr>
         <table>
             <caption><h3>Spending Summary</h3></caption>
