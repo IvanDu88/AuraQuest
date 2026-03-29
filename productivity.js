@@ -2,32 +2,28 @@ window.onload = function () {
 
     const form = document.querySelector(".goal-form form");
 
-    // Stats tracking - start from the static values already shown in HTML
+    // Stats tracking
     let totalPoints = 850;
     let tasksCompletedWeek = 12;
     let totalFocusSeconds = 6 * 3600 + 15 * 60;
     let sessionsCompleted = 3;
 
-    // Stats display elements
     const pointsDisplay = document.getElementById("stat-points");
     const tasksDisplay = document.getElementById("stat-tasks");
     const focusDisplay = document.getElementById("stat-focus");
     const sessionsDisplay = document.getElementById("stat-sessions");
 
-    // Table bodies for all three responsive tables
-    const desktopTbody = document.querySelector(".desktop-table tbody");
-    const mobileTable = document.querySelector(".mobile-table table");
-    const tabletTable = document.querySelector(".tablet-table table");
+    const tbody = document.getElementById("tasks-tbody");
 
-    // ---- WIRE UP PRE-EXISTING STATIC CHECKBOXES ----
-    desktopTbody.querySelectorAll("tr").forEach(function (row) {
+    // ---- WIRE UP PRE-EXISTING CHECKBOXES ----
+    tbody.querySelectorAll("tr").forEach(function (row) {
         const checkbox = row.querySelector("input[type='checkbox']");
         if (checkbox) {
-            wireDesktopCheckbox(checkbox, row);
+            wireCheckbox(checkbox, row);
         }
     });
 
-    function wireDesktopCheckbox(checkbox, row) {
+    function wireCheckbox(checkbox, row) {
         checkbox.addEventListener("click", function () {
             if (checkbox.checked) {
                 row.cells[2].textContent = "✓ Completed";
@@ -55,13 +51,8 @@ window.onload = function () {
         const prioritySelect = document.getElementById("priority");
 
         let errorMessage = "";
-
-        if (goalInput.value.trim() === "") {
-            errorMessage += "Goal description cannot be empty.\n";
-        }
-        if (prioritySelect.value === "") {
-            errorMessage += "Please select a priority.\n";
-        }
+        if (goalInput.value.trim() === "") errorMessage += "Goal description cannot be empty.\n";
+        if (prioritySelect.value === "") errorMessage += "Please select a priority.\n";
 
         if (errorMessage !== "") {
             alert(errorMessage);
@@ -75,8 +66,7 @@ window.onload = function () {
         if (priority === "High") priorityClass = "priority-high";
         else if (priority === "Medium") priorityClass = "priority-medium";
 
-        // --- Add to DESKTOP table ---
-        const newDesktopRow = document.createElement("tr");
+        const newRow = document.createElement("tr");
 
         const taskTd = document.createElement("td");
         taskTd.textContent = taskText;
@@ -94,89 +84,13 @@ window.onload = function () {
         actionTd.appendChild(checkbox);
         actionTd.appendChild(document.createTextNode(" Mark Complete"));
 
-        newDesktopRow.appendChild(taskTd);
-        newDesktopRow.appendChild(priorityTd);
-        newDesktopRow.appendChild(statusTd);
-        newDesktopRow.appendChild(actionTd);
-        desktopTbody.appendChild(newDesktopRow);
+        newRow.appendChild(taskTd);
+        newRow.appendChild(priorityTd);
+        newRow.appendChild(statusTd);
+        newRow.appendChild(actionTd);
+        tbody.appendChild(newRow);
 
-        wireDesktopCheckbox(checkbox, newDesktopRow);
-
-        // --- Add to MOBILE table ---
-        const dividerRow = document.createElement("tr");
-        dividerRow.innerHTML = "<td colspan='2'><hr></td>";
-        mobileTable.appendChild(dividerRow);
-
-        const mobileTaskRow = document.createElement("tr");
-        mobileTaskRow.innerHTML = "<th>Task:</th><td>" + taskText + "</td>";
-
-        const mobilePriorityRow = document.createElement("tr");
-        mobilePriorityRow.innerHTML = "<th>Priority:</th><td class='" + priorityClass + "'>" + priority + "</td>";
-
-        const mobileStatusTd = document.createElement("td");
-        mobileStatusTd.textContent = "Not Started";
-        const mobileStatusRow = document.createElement("tr");
-        mobileStatusRow.innerHTML = "<th>Status:</th>";
-        mobileStatusRow.appendChild(mobileStatusTd);
-
-        const mobileActionTd = document.createElement("td");
-        const mobileCheckbox = document.createElement("input");
-        mobileCheckbox.type = "checkbox";
-        mobileActionTd.appendChild(mobileCheckbox);
-        mobileActionTd.appendChild(document.createTextNode(" Mark Complete"));
-        const mobileActionRow = document.createElement("tr");
-        mobileActionRow.innerHTML = "<th>Action:</th>";
-        mobileActionRow.appendChild(mobileActionTd);
-
-        mobileCheckbox.addEventListener("click", function () {
-            if (mobileCheckbox.checked) {
-                mobileStatusTd.textContent = "✓ Completed";
-                mobileActionTd.textContent = "Done!";
-            }
-        });
-
-        mobileTable.appendChild(mobileTaskRow);
-        mobileTable.appendChild(mobilePriorityRow);
-        mobileTable.appendChild(mobileStatusRow);
-        mobileTable.appendChild(mobileActionRow);
-
-        // --- Add to TABLET table ---
-        const tabletRows = Array.from(tabletTable.querySelectorAll("tr"));
-        let statusHeaderRow = null;
-        tabletRows.forEach(function (row) {
-            const th = row.querySelector("th");
-            if (th && th.textContent.trim() === "Status") {
-                statusHeaderRow = row;
-            }
-        });
-
-        const tabletTaskRow = document.createElement("tr");
-        tabletTaskRow.innerHTML = "<td>" + taskText + "</td><td class='" + priorityClass + "'>" + priority + "</td>";
-
-        if (statusHeaderRow) {
-            tabletTable.insertBefore(tabletTaskRow, statusHeaderRow);
-        } else {
-            tabletTable.appendChild(tabletTaskRow);
-        }
-
-        const tabletStatusTd = document.createElement("td");
-        tabletStatusTd.textContent = "Not Started";
-        const tabletActionTd = document.createElement("td");
-        const tabletCheckbox = document.createElement("input");
-        tabletCheckbox.type = "checkbox";
-        tabletActionTd.appendChild(tabletCheckbox);
-        tabletActionTd.appendChild(document.createTextNode(" Mark Complete"));
-        const tabletStatusRow = document.createElement("tr");
-        tabletStatusRow.appendChild(tabletStatusTd);
-        tabletStatusRow.appendChild(tabletActionTd);
-        tabletTable.appendChild(tabletStatusRow);
-
-        tabletCheckbox.addEventListener("click", function () {
-            if (tabletCheckbox.checked) {
-                tabletStatusTd.textContent = "✓ Completed";
-                tabletActionTd.textContent = "Done!";
-            }
-        });
+        wireCheckbox(checkbox, newRow);
 
         form.reset();
     });
@@ -231,7 +145,6 @@ window.onload = function () {
                     sessionsCompleted++;
                     totalFocusSeconds += 25 * 60;
                     totalPoints += 25;
-
                     const tomatoStr = "🍅".repeat(sessionsCompleted);
                     sessionsDisplay.innerHTML = "<strong>Sessions Completed Today:</strong> <span class='emoji-large'>" + sessionsCompleted + " " + tomatoStr + "</span>";
                     updateStats();
