@@ -6,7 +6,7 @@
     <title>AuraQuest | Productivity Arena</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="productivityStyles.css">
-    <script src="productivity.js" defer></script>
+    <script src="productivityScript.js" defer></script>
 </head>
 
 <body>
@@ -44,107 +44,9 @@
         <hr>
     </section>
 
-    <section class="mobile-table">
+    <section class="tasks-section">
         <h2>Today's Tasks</h2>
-        <table>
-            <caption>Active Goals</caption>
-            <tr>
-                <th>Task:</th>
-                <td>Complete project proposal</td>
-            </tr>
-            <tr>
-                <th>Priority:</th>
-                <td class="priority-high">High</td>
-            </tr>
-            <tr>
-                <th>Status:</th>
-                <td>In Progress</td>
-            </tr>
-            <tr>
-                <th>Action:</th>
-                <td><input type="checkbox"> Mark Complete</td>
-            </tr>
-            <tr><td colspan="2"><hr></td></tr>
-            <tr>
-                <th>Task:</th>
-                <td>Exercise for 20 minutes</td>
-            </tr>
-            <tr>
-                <th>Priority:</th>
-                <td class="priority-medium">Medium</td>
-            </tr>
-            <tr>
-                <th>Status:</th>
-                <td>Not Started</td>
-            </tr>
-            <tr>
-                <th>Action:</th>
-                <td><input type="checkbox"> Mark Complete</td>
-            </tr>
-            <tr><td colspan="2"><hr></td></tr>
-            <tr>
-                <th>Task:</th>
-                <td>Read 10 pages</td>
-            </tr>
-            <tr>
-                <th>Priority:</th>
-                <td class="priority-low">Low</td>
-            </tr>
-            <tr>
-                <th>Status:</th>
-                <td>✓ Completed</td>
-            </tr>
-            <tr>
-                <th>Action:</th>
-                <td>Done!</td>
-            </tr>
-        </table>
-        <hr>
-    </section>
-
-    <section class="tablet-table">
-        <h2>Today's Tasks</h2>
-        <table>
-            <caption>Active Goals</caption>
-            <tr>
-                <th><u>Task</u></th>
-                <th><u>Priority</u></th>
-            </tr>
-            <tr>
-                <td>Complete project proposal</td>
-                <td class="priority-high">High</td>
-            </tr>
-            <tr>
-                <td>Exercise for 20 minutes</td>
-                <td class="priority-medium">Medium</td>
-            </tr>
-            <tr>
-                <td>Read 10 pages</td>
-                <td class="priority-low">Low</td>
-            </tr>
-            <tr>
-                <th><u>Status</u></th>
-                <th><u>Action</u></th>
-            </tr>
-            <tr>
-                <td>In Progress</td>
-                <td><input type="checkbox"> Mark Complete</td>
-            </tr>
-            <tr>
-                <td>Not Started</td>
-                <td><input type="checkbox"> Mark Complete</td>
-            </tr>
-            <tr>
-                <td>✓ Completed</td>
-                <td>Done!</td>
-            </tr>
-        </table>
-        <hr>
-    </section>
-
-    <section class="desktop-table">
-        <h2>Today's Tasks</h2>
-        <table>
+        <table id="tasks-table">
             <caption>Active Goals</caption>
             <thead>
                 <tr>
@@ -154,7 +56,7 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tasks-tbody">
                 <tr>
                     <td>Complete project proposal</td>
                     <td class="priority-high">High</td>
