@@ -1,229 +1,281 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AuraQuest | Productivity Arena</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="productivityStyles.css">
-    <script src="productivity.js" defer></script>
-</head>
+window.onload = function () {
 
-<body>
-    <div>
-        <nav>
-            <a href="index.html"><b>&larr; Home</b></a>
-        </nav>
-    </div>
+    const form = document.querySelector(".goal-form form");
 
-    <section>
-        <h1>Productivity Arena</h1>
-        <p id="description">
-            The Productivity Arena helps you set and achieve your personal goals.
-            Track your tasks, use the Pomodoro timer, and earn points for your progress!
-        </p>
-        <hr>
-    </section>
+    // Stats tracking - start from the static values already shown in HTML
+    let totalPoints = 850;
+    let tasksCompletedWeek = 12;
+    let totalFocusSeconds = 6 * 3600 + 15 * 60;
+    let sessionsCompleted = 3;
 
-    <section class="goal-form">
-        <h2>Set Your Goals</h2>
-        <form>
-            <label for="goal">New Goal:</label>
-            <input type="text" id="goal" name="goal" placeholder="ex: Read for 30 minutes" required>
+    // Stats display elements
+    const pointsDisplay = document.getElementById("stat-points");
+    const tasksDisplay = document.getElementById("stat-tasks");
+    const focusDisplay = document.getElementById("stat-focus");
+    const sessionsDisplay = document.getElementById("stat-sessions");
 
-            <label for="priority">Priority:</label>
-            <select id="priority" name="priority" required>
-                <option value="" disabled hidden>Choose Priority</option>
-                <option value="Low">Low</option>
-                <option value="Medium">Medium</option>
-                <option value="High" selected>High</option>
-            </select>
+    // Table bodies for all three responsive tables
+    const desktopTbody = document.querySelector(".desktop-table tbody");
+    const mobileTable = document.querySelector(".mobile-table table");
+    const tabletTable = document.querySelector(".tablet-table table");
 
-            <label for="deadline">Target Date:</label>
-            <input type="date" id="deadline" name="deadline">
+    // ---- WIRE UP PRE-EXISTING STATIC CHECKBOXES ----
+    desktopTbody.querySelectorAll("tr").forEach(function (row) {
+        const checkbox = row.querySelector("input[type='checkbox']");
+        if (checkbox) {
+            wireDesktopCheckbox(checkbox, row);
+        }
+    });
 
-            <input type="submit" value="Add Goal">
-        </form>
-        <hr>
-    </section>
+    function wireDesktopCheckbox(checkbox, row) {
+        checkbox.addEventListener("click", function () {
+            if (checkbox.checked) {
+                row.cells[2].textContent = "✓ Completed";
+                row.cells[3].textContent = "Done!";
+                tasksCompletedWeek++;
+                totalPoints += 10;
+                updateStats();
+            }
+        });
+    }
 
-    <section class="mobile-table">
-        <h2>Today's Tasks</h2>
-        <table>
-            <caption>Active Goals</caption>
-            <tr>
-                <th>Task:</th>
-                <td>Complete project proposal</td>
-            </tr>
-            <tr>
-                <th>Priority:</th>
-                <td class="priority-high">High</td>
-            </tr>
-            <tr>
-                <th>Status:</th>
-                <td>In Progress</td>
-            </tr>
-            <tr>
-                <th>Action:</th>
-                <td><input type="checkbox"> Mark Complete</td>
-            </tr>
-            <tr><td colspan="2"><hr></td></tr>
-            <tr>
-                <th>Task:</th>
-                <td>Exercise for 20 minutes</td>
-            </tr>
-            <tr>
-                <th>Priority:</th>
-                <td class="priority-medium">Medium</td>
-            </tr>
-            <tr>
-                <th>Status:</th>
-                <td>Not Started</td>
-            </tr>
-            <tr>
-                <th>Action:</th>
-                <td><input type="checkbox"> Mark Complete</td>
-            </tr>
-            <tr><td colspan="2"><hr></td></tr>
-            <tr>
-                <th>Task:</th>
-                <td>Read 10 pages</td>
-            </tr>
-            <tr>
-                <th>Priority:</th>
-                <td class="priority-low">Low</td>
-            </tr>
-            <tr>
-                <th>Status:</th>
-                <td>✓ Completed</td>
-            </tr>
-            <tr>
-                <th>Action:</th>
-                <td>Done!</td>
-            </tr>
-        </table>
-        <hr>
-    </section>
+    function updateStats() {
+        pointsDisplay.innerHTML = "<strong>Total Points Earned:</strong> " + totalPoints + " ⭐";
+        tasksDisplay.innerHTML = "<strong>Tasks Completed This Week:</strong> " + tasksCompletedWeek;
+        const hrs = Math.floor(totalFocusSeconds / 3600);
+        const mins = Math.floor((totalFocusSeconds % 3600) / 60);
+        focusDisplay.innerHTML = "<strong>Focus Time This Week:</strong> " + hrs + " hours " + mins + " minutes";
+    }
 
-    <section class="tablet-table">
-        <h2>Today's Tasks</h2>
-        <table>
-            <caption>Active Goals</caption>
-            <tr>
-                <th><u>Task</u></th>
-                <th><u>Priority</u></th>
-            </tr>
-            <tr>
-                <td>Complete project proposal</td>
-                <td class="priority-high">High</td>
-            </tr>
-            <tr>
-                <td>Exercise for 20 minutes</td>
-                <td class="priority-medium">Medium</td>
-            </tr>
-            <tr>
-                <td>Read 10 pages</td>
-                <td class="priority-low">Low</td>
-            </tr>
-            <tr>
-                <th><u>Status</u></th>
-                <th><u>Action</u></th>
-            </tr>
-            <tr>
-                <td>In Progress</td>
-                <td><input type="checkbox"> Mark Complete</td>
-            </tr>
-            <tr>
-                <td>Not Started</td>
-                <td><input type="checkbox"> Mark Complete</td>
-            </tr>
-            <tr>
-                <td>✓ Completed</td>
-                <td>Done!</td>
-            </tr>
-        </table>
-        <hr>
-    </section>
+    // ---- GOAL FORM SUBMISSION ----
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-    <section class="desktop-table">
-        <h2>Today's Tasks</h2>
-        <table>
-            <caption>Active Goals</caption>
-            <thead>
-                <tr>
-                    <th>Task</th>
-                    <th>Priority</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Complete project proposal</td>
-                    <td class="priority-high">High</td>
-                    <td>In Progress</td>
-                    <td><input type="checkbox"> Mark Complete</td>
-                </tr>
-                <tr>
-                    <td>Exercise for 20 minutes</td>
-                    <td class="priority-medium">Medium</td>
-                    <td>Not Started</td>
-                    <td><input type="checkbox"> Mark Complete</td>
-                </tr>
-                <tr>
-                    <td>Read 10 pages</td>
-                    <td class="priority-low">Low</td>
-                    <td>✓ Completed</td>
-                    <td>Done!</td>
-                </tr>
-            </tbody>
-        </table>
-        <hr>
-    </section>
+        const goalInput = document.getElementById("goal");
+        const prioritySelect = document.getElementById("priority");
 
-    <section class="timer-section">
-        <h2>Pomodoro Timer</h2>
-        <p>
-            Use the Pomodoro technique to stay focused! Work for 25 minutes, 
-            then take a 5-minute break.
-        </p>
-        
-        <form>
-            <label for="session-type">Session Type:</label>
-            <select id="session-type" name="session-type">
-                <option>Work (25 min)</option>
-                <option>Short Break (5 min)</option>
-                <option>Long Break (15 min)</option>
-            </select>
+        let errorMessage = "";
 
-            <label for="task-focus">What are you working on?</label>
-            <input type="text" id="task-focus" name="task-focus" placeholder="Focus task">
+        if (goalInput.value.trim() === "") {
+            errorMessage += "Goal description cannot be empty.\n";
+        }
+        if (prioritySelect.value === "") {
+            errorMessage += "Please select a priority.\n";
+        }
 
-            <div class="timer-controls">
-                <input type="button" value="Start Timer">
-                <input type="button" value="Pause">
-                <input type="button" value="Reset">
-            </div>
-        </form>
+        if (errorMessage !== "") {
+            alert(errorMessage);
+            return;
+        }
 
-        <p class="timer-display">25:00</p>
-        <p id="stat-sessions"><strong>Sessions Completed Today:</strong> <span class="emoji-large">3 🍅🍅🍅</span></p>
-        <hr>
-    </section>
+        const taskText = goalInput.value.trim();
+        const priority = prioritySelect.value;
 
-    <section class="stats-section">
-        <h2>Progress Stats</h2>
-        <ul>
-            <li><strong>Current Streak:</strong> 7 days 🔥</li>
-            <li id="stat-points"><strong>Total Points Earned:</strong> 850 ⭐</li>
-            <li id="stat-tasks"><strong>Tasks Completed This Week:</strong> 12</li>
-            <li id="stat-focus"><strong>Focus Time This Week:</strong> 6 hours 15 minutes</li>
-        </ul>
-    </section>
+        let priorityClass = "priority-low";
+        if (priority === "High") priorityClass = "priority-high";
+        else if (priority === "Medium") priorityClass = "priority-medium";
 
-    <footer>
-        <p>&copy; 2026 AuraQuest</p>
-    </footer>
+        // --- Add to DESKTOP table ---
+        const newDesktopRow = document.createElement("tr");
 
-</body>
-</html>
+        const taskTd = document.createElement("td");
+        taskTd.textContent = taskText;
+
+        const priorityTd = document.createElement("td");
+        priorityTd.textContent = priority;
+        priorityTd.className = priorityClass;
+
+        const statusTd = document.createElement("td");
+        statusTd.textContent = "Not Started";
+
+        const actionTd = document.createElement("td");
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        actionTd.appendChild(checkbox);
+        actionTd.appendChild(document.createTextNode(" Mark Complete"));
+
+        newDesktopRow.appendChild(taskTd);
+        newDesktopRow.appendChild(priorityTd);
+        newDesktopRow.appendChild(statusTd);
+        newDesktopRow.appendChild(actionTd);
+        desktopTbody.appendChild(newDesktopRow);
+
+        wireDesktopCheckbox(checkbox, newDesktopRow);
+
+        // --- Add to MOBILE table ---
+        const dividerRow = document.createElement("tr");
+        dividerRow.innerHTML = "<td colspan='2'><hr></td>";
+        mobileTable.appendChild(dividerRow);
+
+        const mobileTaskRow = document.createElement("tr");
+        mobileTaskRow.innerHTML = "<th>Task:</th><td>" + taskText + "</td>";
+
+        const mobilePriorityRow = document.createElement("tr");
+        mobilePriorityRow.innerHTML = "<th>Priority:</th><td class='" + priorityClass + "'>" + priority + "</td>";
+
+        const mobileStatusTd = document.createElement("td");
+        mobileStatusTd.textContent = "Not Started";
+        const mobileStatusRow = document.createElement("tr");
+        mobileStatusRow.innerHTML = "<th>Status:</th>";
+        mobileStatusRow.appendChild(mobileStatusTd);
+
+        const mobileActionTd = document.createElement("td");
+        const mobileCheckbox = document.createElement("input");
+        mobileCheckbox.type = "checkbox";
+        mobileActionTd.appendChild(mobileCheckbox);
+        mobileActionTd.appendChild(document.createTextNode(" Mark Complete"));
+        const mobileActionRow = document.createElement("tr");
+        mobileActionRow.innerHTML = "<th>Action:</th>";
+        mobileActionRow.appendChild(mobileActionTd);
+
+        mobileCheckbox.addEventListener("click", function () {
+            if (mobileCheckbox.checked) {
+                mobileStatusTd.textContent = "✓ Completed";
+                mobileActionTd.textContent = "Done!";
+            }
+        });
+
+        mobileTable.appendChild(mobileTaskRow);
+        mobileTable.appendChild(mobilePriorityRow);
+        mobileTable.appendChild(mobileStatusRow);
+        mobileTable.appendChild(mobileActionRow);
+
+        // --- Add to TABLET table ---
+        const tabletRows = Array.from(tabletTable.querySelectorAll("tr"));
+        let statusHeaderRow = null;
+        tabletRows.forEach(function (row) {
+            const th = row.querySelector("th");
+            if (th && th.textContent.trim() === "Status") {
+                statusHeaderRow = row;
+            }
+        });
+
+        const tabletTaskRow = document.createElement("tr");
+        tabletTaskRow.innerHTML = "<td>" + taskText + "</td><td class='" + priorityClass + "'>" + priority + "</td>";
+
+        if (statusHeaderRow) {
+            tabletTable.insertBefore(tabletTaskRow, statusHeaderRow);
+        } else {
+            tabletTable.appendChild(tabletTaskRow);
+        }
+
+        const tabletStatusTd = document.createElement("td");
+        tabletStatusTd.textContent = "Not Started";
+        const tabletActionTd = document.createElement("td");
+        const tabletCheckbox = document.createElement("input");
+        tabletCheckbox.type = "checkbox";
+        tabletActionTd.appendChild(tabletCheckbox);
+        tabletActionTd.appendChild(document.createTextNode(" Mark Complete"));
+        const tabletStatusRow = document.createElement("tr");
+        tabletStatusRow.appendChild(tabletStatusTd);
+        tabletStatusRow.appendChild(tabletActionTd);
+        tabletTable.appendChild(tabletStatusRow);
+
+        tabletCheckbox.addEventListener("click", function () {
+            if (tabletCheckbox.checked) {
+                tabletStatusTd.textContent = "✓ Completed";
+                tabletActionTd.textContent = "Done!";
+            }
+        });
+
+        form.reset();
+    });
+
+    // ---- POMODORO TIMER ----
+    const timerDisplay = document.querySelector(".timer-display");
+    const sessionSelect = document.getElementById("session-type");
+    const timerButtons = document.querySelectorAll(".timer-controls input[type='button']");
+    const startBtn = timerButtons[0];
+    const pauseBtn = timerButtons[1];
+    const resetBtn = timerButtons[2];
+
+    let timerInterval = null;
+    let secondsLeft = 25 * 60;
+    let isPaused = false;
+
+    function getSessionSeconds() {
+        const val = sessionSelect.value;
+        if (val.includes("25")) return 25 * 60;
+        if (val.includes("5")) return 5 * 60;
+        if (val.includes("15")) return 15 * 60;
+        return 25 * 60;
+    }
+
+    function formatTime(seconds) {
+        const m = Math.floor(seconds / 60);
+        const s = seconds % 60;
+        return (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
+    }
+
+    function updateTimerDisplay() {
+        timerDisplay.textContent = formatTime(secondsLeft);
+    }
+
+    sessionSelect.addEventListener("change", function () {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        isPaused = false;
+        secondsLeft = getSessionSeconds();
+        updateTimerDisplay();
+    });
+
+    startBtn.addEventListener("click", function () {
+        if (timerInterval !== null) return;
+
+        timerInterval = setInterval(function () {
+            if (secondsLeft <= 0) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+
+                if (sessionSelect.value.includes("25")) {
+                    sessionsCompleted++;
+                    totalFocusSeconds += 25 * 60;
+                    totalPoints += 25;
+
+                    const tomatoStr = "🍅".repeat(sessionsCompleted);
+                    sessionsDisplay.innerHTML = "<strong>Sessions Completed Today:</strong> <span class='emoji-large'>" + sessionsCompleted + " " + tomatoStr + "</span>";
+                    updateStats();
+                }
+
+                alert("⏰ Time's up! Great work!");
+                secondsLeft = getSessionSeconds();
+                updateTimerDisplay();
+                return;
+            }
+            secondsLeft--;
+            updateTimerDisplay();
+        }, 1000);
+    });
+
+    pauseBtn.addEventListener("click", function () {
+        if (timerInterval !== null) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            isPaused = true;
+        } else if (isPaused) {
+            timerInterval = setInterval(function () {
+                if (secondsLeft <= 0) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                    alert("⏰ Time's up!");
+                    secondsLeft = getSessionSeconds();
+                    updateTimerDisplay();
+                    return;
+                }
+                secondsLeft--;
+                updateTimerDisplay();
+            }, 1000);
+            isPaused = false;
+        }
+    });
+
+    resetBtn.addEventListener("click", function () {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        isPaused = false;
+        secondsLeft = getSessionSeconds();
+        updateTimerDisplay();
+    });
+
+    updateTimerDisplay();
+};
