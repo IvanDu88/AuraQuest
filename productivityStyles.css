@@ -20,13 +20,16 @@ footer {
     margin-top: auto;
 }
 
-.desktop-table {
-    display: none;
+/* Tasks table always visible */
+#tasks-table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.tablet-table {
-    display: none;
-    text-align: center;
+#tasks-table th, #tasks-table td {
+    padding: 6px 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
 }
 
 th {
@@ -142,62 +145,6 @@ input, select {
 /* Emoji Styling */
 .emoji-large {
     font-size: 1.5rem;
-}
-
-/* Tablet Display */
-@media (min-width: 768px) {
-    .tablet-table {
-        display: block;
-    }
-    .mobile-table {
-        display: none;
-    }
-}
-
-/* Tablet  */
-@media screen and (max-width: 768px) {
-    .goal-form label,
-    .timer-section label {
-        display: block;
-        width: 100%;
-        margin-right: 0;
-    }
-
-    .goal-form input[type="text"],
-    .goal-form input[type="date"],
-    .goal-form select,
-    .timer-section input[type="text"],
-    .timer-section select {
-        display: block;
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-
-    .timer-display {
-        font-size: 1.8rem;
-    }
-
-    .timer-controls {
-        flex-direction: column;
-    }
-
-    .timer-controls input {
-        width: 100%;
-    }
-}
-
-/* Desktop Display/
-@media (min-width: 1024px) {
-    .tablet-table {
-        display: none;
-    }
-    .mobile-table {
-        display: none;
-    }
-    .desktop-table {
-        display: block;
-    }
 }
 
 /* Mobile */
