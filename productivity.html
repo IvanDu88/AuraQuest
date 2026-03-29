@@ -39,9 +39,6 @@
                 <option value="High" selected>High</option>
             </select>
 
-            <label for="deadline">Target Date:</label>
-            <input type="date" id="deadline" name="deadline">
-
             <input type="submit" value="Add Goal">
         </form>
         <hr>
@@ -207,7 +204,7 @@
         </form>
 
         <p class="timer-display">25:00</p>
-        <p><strong>Sessions Completed Today:</strong> <span class="emoji-large">3 🍅🍅🍅</span></p>
+        <p id="stat-sessions"><strong>Sessions Completed Today:</strong> <span class="emoji-large">3 🍅🍅🍅</span></p>
         <hr>
     </section>
 
@@ -215,9 +212,9 @@
         <h2>Progress Stats</h2>
         <ul>
             <li><strong>Current Streak:</strong> 7 days 🔥</li>
-            <li><strong>Total Points Earned:</strong> 850 ⭐</li>
-            <li><strong>Tasks Completed This Week:</strong> 12</li>
-            <li><strong>Focus Time This Week:</strong> 6 hours 15 minutes</li>
+            <li id="stat-points"><strong>Total Points Earned:</strong> 850 ⭐</li>
+            <li id="stat-tasks"><strong>Tasks Completed This Week:</strong> 12</li>
+            <li id="stat-focus"><strong>Focus Time This Week:</strong> 6 hours 15 minutes</li>
         </ul>
     </section>
 
