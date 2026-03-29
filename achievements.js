@@ -15,6 +15,16 @@ window.onload = function () {
     const badgesDisplay = document.querySelector(".progress-overview ul li:nth-child(3)");
     const xpDisplay = document.querySelector(".progress-overview ul li:nth-child(4)");
 
+    // Track which challenges have already been accepted
+    const acceptedChallenges = [];
+
+    const bonusPoints = {
+        "Weekend Warrior - Complete 5 tasks this weekend": 100,
+        "Health Hero - Log all health metrics for 7 days": 150,
+        "Budget Boss - Stay under budget for the month": 200,
+        "Meditation Master - Practice mindfulness daily for a week": 175
+    };
+
     // ---- HOVER EFFECT ON BADGE EMOJIS ----
     const badgeEmojis = document.querySelectorAll(".badge-emoji");
 
@@ -28,7 +38,7 @@ window.onload = function () {
         });
     });
 
-    // ---- LOCKED BADGES HOVER: show progress tooltip ----
+    // ---- LOCKED BADGES HOVER ----
     const lockedRows = document.querySelectorAll(".locked-badges.desktop-table tbody tr");
 
     lockedRows.forEach(function (row) {
@@ -51,18 +61,17 @@ window.onload = function () {
 
         const challengeName = challengeSelect.value;
 
-        // Determine bonus points by challenge index
-        const bonusPoints = {
-            "Weekend Warrior - Complete 5 tasks this weekend": 100,
-            "Health Hero - Log all health metrics for 7 days": 150,
-            "Budget Boss - Stay under budget for the month": 200,
-            "Meditation Master - Practice mindfulness daily for a week": 175
-        };
+        // Prevent accepting the same challenge twice
+        if (acceptedChallenges.indexOf(challengeName) !== -1) {
+            alert("You have already accepted \"" + challengeName + "\"! Choose a different challenge.");
+            return;
+        }
 
         const earned = bonusPoints[challengeName] || 100;
         totalPoints += earned;
         badgesEarned++;
         currentXP += earned;
+        acceptedChallenges.push(challengeName);
 
         // Level up if XP threshold crossed
         while (currentXP >= xpPerLevel) {
@@ -70,11 +79,20 @@ window.onload = function () {
             currentLevel++;
         }
 
-        // Update progress overview using textContent/innerHTML DOM manipulation
+        // Update progress overview
         pointsDisplay.innerHTML = "<strong>Total Points:</strong> " + totalPoints.toLocaleString() + " ⭐";
         levelDisplay.innerHTML = "<strong>Current Level:</strong> " + currentLevel;
         badgesDisplay.innerHTML = "<strong>Badges Earned:</strong> " + badgesEarned + " / 30";
         xpDisplay.innerHTML = "<strong>Progress to Next Level:</strong> " + currentXP + " / " + xpPerLevel + " XP";
+
+        // Disable the accepted option in the dropdown so it's visually unavailable
+        const options = challengeSelect.querySelectorAll("option");
+        options.forEach(function (opt) {
+            if (opt.value === challengeName) {
+                opt.disabled = true;
+                opt.textContent = opt.textContent + " ✓";
+            }
+        });
 
         // Dynamically prepend a new milestone entry
         const today = new Date();
@@ -86,7 +104,7 @@ window.onload = function () {
         const firstChild = milestonesOl.firstChild;
         milestonesOl.insertBefore(newMilestone, firstChild);
 
-        // Flash the new milestone using setTimeout for a dynamic animation effect
+        // Flash the new milestone green for 2 seconds
         newMilestone.style.color = "green";
         newMilestone.style.fontWeight = "bold";
         setTimeout(function () {
@@ -94,7 +112,7 @@ window.onload = function () {
             newMilestone.style.fontWeight = "";
         }, 2000);
 
-        // Confirmation message appended dynamically
+        // Confirmation message
         let confirmation = document.getElementById("challengeConfirm");
         if (!confirmation) {
             confirmation = document.createElement("p");
@@ -107,20 +125,20 @@ window.onload = function () {
 
         challengeForm.reset();
 
-        // Clear confirmation after 3 seconds using setTimeout
+        // Clear confirmation after 3 seconds
         setTimeout(function () {
             if (confirmation) confirmation.textContent = "";
         }, 3000);
     });
 
-    // ---- KEY EVENT: Enter on challenge select auto-submits ----
+    // ---- KEY EVENT: Enter on challenge select triggers submit ----
     challengeSelect.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             challengeForm.querySelector("input[type='submit']").click();
         }
     });
 
-    // ---- INTERVAL: Animate XP bar hint every 10 seconds ----
+    // ---- INTERVAL: Pulse XP display every 10 seconds ----
     setInterval(function () {
         xpDisplay.style.color = "#BA8E23";
         setTimeout(function () {
