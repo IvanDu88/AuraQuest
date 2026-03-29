@@ -1,41 +1,68 @@
 window.onload = function () {
 
     const form = document.querySelector(".goal-form form");
-    const timerDisplay = document.querySelector(".timer-display");
-    const sessionSelect = document.getElementById("session-type");
-    const timerButtons = document.querySelectorAll(".timer-controls input[type='button']");
-    const startBtn = timerButtons[0];
-    const pauseBtn = timerButtons[1];
-    const resetBtn = timerButtons[2];
-    const sessionsDisplay = document.querySelector(".stats-section ul li:nth-child(3)");
-    const focusTimeDisplay = document.querySelector(".stats-section ul li:nth-child(4)");
-    const pointsDisplay = document.querySelector(".stats-section ul li:nth-child(2)");
 
-    // Desktop tbody for dynamic goal insertion
-    const desktopTbody = document.querySelector(".desktop-table tbody");
-
-    let timerInterval = null;
-    let secondsLeft = 25 * 60;
-    let isPaused = false;
-    let sessionsCompleted = 3;
+    // Stats tracking - start from the static values already shown in HTML
     let totalPoints = 850;
-    let totalFocusSeconds = 6 * 3600 + 15 * 60;
     let tasksCompletedWeek = 12;
+    let totalFocusSeconds = 6 * 3600 + 15 * 60;
+    let sessionsCompleted = 3;
+
+    // Stats display elements - selected by id for reliability
+    const pointsDisplay = document.getElementById("stat-points");
+    const tasksDisplay = document.getElementById("stat-tasks");
+    const focusDisplay = document.getElementById("stat-focus");
+    const sessionsDisplay = document.getElementById("stat-sessions");
+
+    // Table bodies for all three responsive tables
+    const desktopTbody = document.querySelector(".desktop-table tbody");
+    const mobileTable = document.querySelector(".mobile-table table");
+    const tabletTable = document.querySelector(".tablet-table table");
+
+    // ---- WIRE UP PRE-EXISTING CHECKBOXES ----
+    desktopTbody.querySelectorAll("tr").forEach(function (row) {
+        const checkbox = row.querySelector("input[type='checkbox']");
+        if (checkbox) {
+            wireDesktopCheckbox(checkbox, row);
+        }
+    });
+
+    function wireDesktopCheckbox(checkbox, row) {
+        checkbox.addEventListener("click", function () {
+            if (checkbox.checked) {
+                const statusTd = row.cells[2];
+                const actionTd = row.cells[3];
+                statusTd.textContent = "✓ Completed";
+                actionTd.textContent = "Done!";
+                tasksCompletedWeek++;
+                totalPoints += 10;
+                updateStats();
+            }
+        });
+    }
+
+    function updateStats() {
+        pointsDisplay.innerHTML = "<strong>Total Points Earned:</strong> " + totalPoints + " ⭐";
+        tasksDisplay.innerHTML = "<strong>Tasks Completed This Week:</strong> " + tasksCompletedWeek;
+        const hrs = Math.floor(totalFocusSeconds / 3600);
+        const mins = Math.floor((totalFocusSeconds % 3600) / 60);
+        focusDisplay.innerHTML = "<strong>Focus Time This Week:</strong> " + hrs + " hours " + mins + " minutes";
+    }
 
     // ---- GOAL FORM VALIDATION & DOM MANIPULATION ----
     form.addEventListener("submit", function (event) {
         event.preventDefault();
 
         const goalInput = document.getElementById("goal");
-        const priority = document.getElementById("priority").value;
-        const deadline = document.getElementById("deadline").value;
+        const prioritySelect = document.getElementById("priority");
+        const deadlineInput = document.getElementById("deadline");
 
         let errorMessage = "";
 
         if (goalInput.value.trim() === "") {
             errorMessage += "Goal description cannot be empty.\n";
         }
-        if (priority === "") {
+        if (prioritySelect.value === "") {
             errorMessage += "Please select a priority.\n";
         }
 
@@ -44,54 +71,135 @@ window.onload = function () {
             return;
         }
 
-        // Create a new row in the desktop table
-        const newRow = document.createElement("tr");
+        const taskText = goalInput.value.trim();
+        const priority = prioritySelect.value;
+        const deadline = deadlineInput.value;
+        const statusText = deadline ? "Due: " + deadline : "Not Started";
+
+        let priorityClass = "priority-low";
+        if (priority === "High") priorityClass = "priority-high";
+        else if (priority === "Medium") priorityClass = "priority-medium";
+
+        // --- Add to DESKTOP table ---
+        const newDesktopRow = document.createElement("tr");
 
         const taskTd = document.createElement("td");
-        taskTd.textContent = goalInput.value.trim();
+        taskTd.textContent = taskText;
 
         const priorityTd = document.createElement("td");
         priorityTd.textContent = priority;
-        if (priority === "High") priorityTd.className = "priority-high";
-        else if (priority === "Medium") priorityTd.className = "priority-medium";
-        else priorityTd.className = "priority-low";
+        priorityTd.className = priorityClass;
 
         const statusTd = document.createElement("td");
-        statusTd.textContent = deadline ? "Due: " + deadline : "Not Started";
+        statusTd.textContent = statusText;
 
         const actionTd = document.createElement("td");
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
-
-        const label = document.createElement("span");
-        label.textContent = " Mark Complete";
-
-        // Checkbox click event: update status and award points
-        checkbox.addEventListener("click", function (event) {
-            if (event.target.checked) {
-                statusTd.textContent = "✓ Completed";
-                actionTd.textContent = "Done!";
-                tasksCompletedWeek++;
-                totalPoints += 10;
-                sessionsDisplay.innerHTML = "<strong>Tasks Completed This Week:</strong> " + tasksCompletedWeek;
-                pointsDisplay.innerHTML = "<strong>Total Points Earned:</strong> " + totalPoints + " ⭐";
-            }
-        });
-
+        const label = document.createTextNode(" Mark Complete");
         actionTd.appendChild(checkbox);
         actionTd.appendChild(label);
 
-        newRow.appendChild(taskTd);
-        newRow.appendChild(priorityTd);
-        newRow.appendChild(statusTd);
-        newRow.appendChild(actionTd);
+        newDesktopRow.appendChild(taskTd);
+        newDesktopRow.appendChild(priorityTd);
+        newDesktopRow.appendChild(statusTd);
+        newDesktopRow.appendChild(actionTd);
+        desktopTbody.appendChild(newDesktopRow);
 
-        desktopTbody.appendChild(newRow);
+        wireDesktopCheckbox(checkbox, newDesktopRow);
+
+        // --- Add to MOBILE table ---
+        const dividerRow = document.createElement("tr");
+        dividerRow.innerHTML = "<td colspan='2'><hr></td>";
+        mobileTable.appendChild(dividerRow);
+
+        const mobileTaskRow = document.createElement("tr");
+        mobileTaskRow.innerHTML = "<th>Task:</th><td>" + taskText + "</td>";
+
+        const mobilePriorityRow = document.createElement("tr");
+        mobilePriorityRow.innerHTML = "<th>Priority:</th><td class='" + priorityClass + "'>" + priority + "</td>";
+
+        const mobileStatusTd = document.createElement("td");
+        mobileStatusTd.textContent = statusText;
+        const mobileStatusRow = document.createElement("tr");
+        mobileStatusRow.innerHTML = "<th>Status:</th>";
+        mobileStatusRow.appendChild(mobileStatusTd);
+
+        const mobileActionTd = document.createElement("td");
+        const mobileCheckbox = document.createElement("input");
+        mobileCheckbox.type = "checkbox";
+        mobileActionTd.appendChild(mobileCheckbox);
+        mobileActionTd.appendChild(document.createTextNode(" Mark Complete"));
+        const mobileActionRow = document.createElement("tr");
+        mobileActionRow.innerHTML = "<th>Action:</th>";
+        mobileActionRow.appendChild(mobileActionTd);
+
+        mobileCheckbox.addEventListener("click", function () {
+            if (mobileCheckbox.checked) {
+                mobileStatusTd.textContent = "✓ Completed";
+                mobileActionTd.textContent = "Done!";
+            }
+        });
+
+        mobileTable.appendChild(mobileTaskRow);
+        mobileTable.appendChild(mobilePriorityRow);
+        mobileTable.appendChild(mobileStatusRow);
+        mobileTable.appendChild(mobileActionRow);
+
+        // --- Add to TABLET table ---
+        // Find the Status header row index to insert task/priority rows before it
+        const tabletRows = Array.from(tabletTable.querySelectorAll("tr"));
+        let statusHeaderRow = null;
+        tabletRows.forEach(function (row) {
+            const th = row.querySelector("th");
+            if (th && th.textContent.trim() === "Status") {
+                statusHeaderRow = row;
+            }
+        });
+
+        const tabletTaskRow = document.createElement("tr");
+        tabletTaskRow.innerHTML = "<td>" + taskText + "</td><td class='" + priorityClass + "'>" + priority + "</td>";
+
+        if (statusHeaderRow) {
+            tabletTable.insertBefore(tabletTaskRow, statusHeaderRow);
+        } else {
+            tabletTable.appendChild(tabletTaskRow);
+        }
+
+        const tabletStatusTd = document.createElement("td");
+        tabletStatusTd.textContent = statusText;
+        const tabletActionTd = document.createElement("td");
+        const tabletCheckbox = document.createElement("input");
+        tabletCheckbox.type = "checkbox";
+        tabletActionTd.appendChild(tabletCheckbox);
+        tabletActionTd.appendChild(document.createTextNode(" Mark Complete"));
+        const tabletStatusRow = document.createElement("tr");
+        tabletStatusRow.appendChild(tabletStatusTd);
+        tabletStatusRow.appendChild(tabletActionTd);
+        tabletTable.appendChild(tabletStatusRow);
+
+        tabletCheckbox.addEventListener("click", function () {
+            if (tabletCheckbox.checked) {
+                tabletStatusTd.textContent = "✓ Completed";
+                tabletActionTd.textContent = "Done!";
+            }
+        });
 
         form.reset();
     });
 
     // ---- POMODORO TIMER ----
+    const timerDisplay = document.querySelector(".timer-display");
+    const sessionSelect = document.getElementById("session-type");
+    const timerButtons = document.querySelectorAll(".timer-controls input[type='button']");
+    const startBtn = timerButtons[0];
+    const pauseBtn = timerButtons[1];
+    const resetBtn = timerButtons[2];
+
+    let timerInterval = null;
+    let secondsLeft = 25 * 60;
+    let isPaused = false;
+
     function getSessionSeconds() {
         const val = sessionSelect.value;
         if (val.includes("25")) return 25 * 60;
@@ -110,7 +218,6 @@ window.onload = function () {
         timerDisplay.textContent = formatTime(secondsLeft);
     }
 
-    // Session type change resets timer
     sessionSelect.addEventListener("change", function () {
         clearInterval(timerInterval);
         timerInterval = null;
@@ -127,23 +234,14 @@ window.onload = function () {
                 clearInterval(timerInterval);
                 timerInterval = null;
 
-                // Only count as session if it was a Work session
                 if (sessionSelect.value.includes("25")) {
                     sessionsCompleted++;
                     totalFocusSeconds += 25 * 60;
                     totalPoints += 25;
 
-                    // Update sessions count with tomatoes
                     const tomatoStr = "🍅".repeat(sessionsCompleted);
-                    document.querySelector(".timer-section p:last-of-type strong").nextSibling.textContent = "";
-                    document.querySelector(".timer-section p:last-of-type").innerHTML =
-                        "<strong>Sessions Completed Today:</strong> <span class='emoji-large'>" + sessionsCompleted + " " + tomatoStr + "</span>";
-
-                    // Update stats
-                    const hrs = Math.floor(totalFocusSeconds / 3600);
-                    const mins = Math.floor((totalFocusSeconds % 3600) / 60);
-                    focusTimeDisplay.innerHTML = "<strong>Focus Time This Week:</strong> " + hrs + " hours " + mins + " minutes";
-                    pointsDisplay.innerHTML = "<strong>Total Points Earned:</strong> " + totalPoints + " ⭐";
+                    sessionsDisplay.innerHTML = "<strong>Sessions Completed Today:</strong> <span class='emoji-large'>" + sessionsCompleted + " " + tomatoStr + "</span>";
+                    updateStats();
                 }
 
                 alert("⏰ Time's up! Great work!");
@@ -162,7 +260,6 @@ window.onload = function () {
             timerInterval = null;
             isPaused = true;
         } else if (isPaused) {
-            // Resume
             timerInterval = setInterval(function () {
                 if (secondsLeft <= 0) {
                     clearInterval(timerInterval);
@@ -187,6 +284,5 @@ window.onload = function () {
         updateTimerDisplay();
     });
 
-    // Initialize timer display
     updateTimerDisplay();
 };
