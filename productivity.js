@@ -1,6 +1,6 @@
 window.onload = function () {
 
-
+    const form = document.querySelector(".goal-form form");
     const timerDisplay = document.querySelector(".timer-display");
     const sessionSelect = document.getElementById("session-type");
     const timerButtons = document.querySelectorAll(".timer-controls input[type='button']");
