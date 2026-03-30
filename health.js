@@ -1,15 +1,36 @@
-window.onload = function () {
 
-    const form = document.querySelector("form");
 
-    form.addEventListener("submit", function (event) {
-        event.preventDefault(); 
+let submitButtons = document.getElementsByClassName("submitButton");
 
-        const water = document.getElementById("water").value;
-        const sleep = document.getElementById("sleep").value;
-        const exercise = document.getElementById("exercise").value;
-        const meals = document.getElementById("meals").value;
+submitButtons[0].addEventListener("click", health); 
+submitButtons[1].addEventListener("click", health); 
+submitButtons[2].addEventListener("click", health); 
+    
+    
+function health(event) {
+    event.preventDefault(); 
 
+    let errorMsg = "";
+
+    let water = document.getElementById("water").value;
+    let sleep = document.getElementById("sleep").value;
+    let exercise = document.getElementById("exercise").value;
+    let meals = document.getElementById("meals").value;
+
+    if(water<0) {
+        errorMsg+="Water Intake cannot be less than 0\n";
+    }
+    if(sleep<0) {
+        errorMsg+="You cannot sleep negative hours\n";
+    }
+    if(exercise<0) {
+        errorMsg+="You cannot exercise negative minutes\n";
+    }
+
+    if(errorMsg!=="") {
+        alert(errorMsg);
+    }
+    else {
         // update table
         document.getElementById("waterStatus").textContent =
             water ? water + " cups 💧" : "No data";
@@ -22,5 +43,5 @@ window.onload = function () {
 
         document.getElementById("mealsStatus").textContent =
             meals ? meals + " meals 🍽️" : "No data";
-    });
-};
+    }
+}
